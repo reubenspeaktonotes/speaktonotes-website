@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Features - SpeaktoNotes</title>
+    <meta name="description" content="SpeaktoNotes mobile features. Capture ideas anywhere with AI-powered voice-to-text on iOS and Android.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+    <style>
+      :root {
+          --bg-page: #000000;
+          --text-primary: #ffffff;
+          --text-secondary: #a1a1aa;
+          --tesla-btn-radius: 4px;
+      }
+      body {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          background-color: var(--bg-page);
+          color: var(--text-primary);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+      }
+
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #000; }
+      ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #BEF264; }
+
+      .fade-enter {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade-enter-active {
+          opacity: 1;
+          transform: translateY(0);
+      }
+    </style>
+</head>
+
+<body class="overflow-x-hidden selection:bg-[#BEF264] selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-black/80 backdrop-blur-md" id="navbar">
+      <div class="max-w-[1600px] mx-auto px-6 h-14 md:h-20 flex items-center justify-between">
+        <a href="/preview.html" class="flex items-center gap-2 z-50 group text-[#BEF264]">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" class="group-hover:text-zinc-300 transition-colors w-[12px] h-[24px]" stroke-width="2" style="width: 12px; height: 24px; color: rgb(190, 242, 100)">
+            <rect x="4" y="12" width="4" height="24" rx="1"></rect>
+            <rect x="10" y="8" width="4" height="32" rx="1"></rect>
+            <rect x="16" y="12" width="4" height="24" rx="1"></rect>
+          </svg>
+          <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          <a href="/download.html" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">Download</a>
+          <a href="/preview.html#faq" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">FAQ</a>
+          <a href="/preview.html#about" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">About</a>
+        </div>
+
+        <button onclick="toggleMenu()" class="lg:hidden text-white bg-white/10 px-3 py-1.5 rounded-[4px] text-sm font-medium backdrop-blur-md">
+          Menu
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-zinc-900/95 backdrop-blur-xl translate-x-full transition-transform duration-500 flex flex-col pt-24 px-8">
+      <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white p-2">
+        <iconify-icon icon="solar:close-circle-linear" width="32"></iconify-icon>
+      </button>
+      <div class="flex flex-col gap-6">
+        <a href="/download.html" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">Download</a>
+        <a href="/preview.html#faq" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">FAQ</a>
+        <a href="/preview.html#about" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">About</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-16 md:pt-40 md:pb-20 text-center px-6">
+      <div class="max-w-3xl mx-auto">
+        <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-4 block">Mobile</span>
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6">Capture Anywhere</h1>
+        <p class="text-lg md:text-xl text-zinc-400 font-light max-w-xl mx-auto">Turn your voice into perfectly written notes, emails, and lists right from your phone. Just talk, and AI does the rest.</p>
+      </div>
+    </section>
+
+    <!-- PHONE SHOWCASE -->
+    <section class="px-6 pb-24 md:pb-32">
+      <div id="phone-showcase" class="max-w-[600px] mx-auto relative" style="height: 620px;">
+        <!-- Phone Image 1 - starts spread left, animates inward -->
+        <img id="phone-left" src="/Speaktonotesphone2.png" class="absolute top-0 left-1/2 h-[560px] object-contain drop-shadow-2xl z-10 transition-transform duration-[1.2s] ease-out" style="transform: translateX(-85%) rotate(-12deg);" alt="SpeaktoNotes Mobile App Recording">
+        <!-- Phone Image 2 - starts spread right, animates inward -->
+        <img id="phone-right" src="/Speaktonotesphone.png" class="absolute top-8 left-1/2 h-[560px] object-contain drop-shadow-2xl z-20 transition-transform duration-[1.2s] ease-out" style="transform: translateX(-15%) rotate(12deg);" alt="SpeaktoNotes Mobile App">
+      </div>
+    </section>
+
+    <!-- MOBILE RECORDING -->
+    <section class="bg-zinc-900/30 py-24 px-6 border-t border-zinc-900">
+      <div class="max-w-[1000px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-3 block">Recording</span>
+          <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-6">One-Tap Recording</h2>
+          <p class="text-zinc-400 font-light leading-relaxed mb-6">
+            Open the app, tap record, and start talking. SpeaktoNotes captures your voice with intelligent noise cancellation - even in noisy environments like cafes, building sites, or busy offices.
+          </p>
+          <p class="text-zinc-400 font-light leading-relaxed">
+            Recording works in the background, so you can lock your phone or switch apps without interrupting capture. Perfect for long meetings or site walk-throughs.
+          </p>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="w-full bg-black border border-zinc-800 rounded-[4px] p-8 md:p-12">
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <iconify-icon icon="solar:microphone-3-linear" class="text-[#BEF264] shrink-0 mt-1" width="24"></iconify-icon>
+                <div>
+                  <p class="text-white text-sm font-medium mb-1">Noise Cancellation</p>
+                  <p class="text-zinc-500 text-xs font-light">Filters background noise for crystal-clear transcription</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <iconify-icon icon="solar:lock-linear" class="text-[#BEF264] shrink-0 mt-1" width="24"></iconify-icon>
+                <div>
+                  <p class="text-white text-sm font-medium mb-1">Background Recording</p>
+                  <p class="text-zinc-500 text-xs font-light">Keep recording even when your screen is locked</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <iconify-icon icon="solar:bolt-linear" class="text-[#BEF264] shrink-0 mt-1" width="24"></iconify-icon>
+                <div>
+                  <p class="text-white text-sm font-medium mb-1">Instant Transcription</p>
+                  <p class="text-zinc-500 text-xs font-light">AI transcription processes your audio 10–25x faster than standard</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI POCKETS ON MOBILE -->
+    <section class="bg-black py-24 px-6 border-t border-zinc-900">
+      <div class="max-w-[1000px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div class="flex items-center justify-center order-2 md:order-1">
+          <div class="w-full bg-black border border-zinc-800 rounded-[4px] p-8">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-zinc-900/60 p-4 rounded-[4px] text-center hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:letter-linear" class="text-[#BEF264] mb-2" width="24"></iconify-icon>
+                <p class="text-white text-xs font-medium">Email</p>
+              </div>
+              <div class="bg-zinc-900/60 p-4 rounded-[4px] text-center hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:chat-round-dots-linear" class="text-[#BEF264] mb-2" width="24"></iconify-icon>
+                <p class="text-white text-xs font-medium">Text</p>
+              </div>
+              <div class="bg-zinc-900/60 p-4 rounded-[4px] text-center hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:checklist-minimalistic-linear" class="text-[#BEF264] mb-2" width="24"></iconify-icon>
+                <p class="text-white text-xs font-medium">List</p>
+              </div>
+              <div class="bg-zinc-900/60 p-4 rounded-[4px] text-center hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:document-text-linear" class="text-[#BEF264] mb-2" width="24"></iconify-icon>
+                <p class="text-white text-xs font-medium">Note</p>
+              </div>
+              <div class="bg-zinc-900/60 p-4 rounded-[4px] text-center hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:share-circle-linear" class="text-[#BEF264] mb-2" width="24"></iconify-icon>
+                <p class="text-white text-xs font-medium">Social</p>
+              </div>
+              <div class="bg-zinc-900/60 p-4 rounded-[4px] text-center hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:users-group-rounded-linear" class="text-[#BEF264] mb-2" width="24"></iconify-icon>
+                <p class="text-white text-xs font-medium">Meeting</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-3 block">Smart Templates</span>
+          <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-6">6 AI Workflows</h2>
+          <p class="text-zinc-400 font-light leading-relaxed mb-6">
+            Select a Workflow before you speak and your transcription is automatically formatted for that specific use case. Email, Text, List, Note, Social, or Meeting - each one tuned to deliver ready-to-use output.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEYBOARD EXTENSION -->
+    <section class="bg-zinc-900/30 py-24 px-6 border-t border-zinc-900">
+      <div class="max-w-[1000px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70">iOS Exclusive</span>
+            <span class="text-[10px] font-semibold tracking-widest uppercase bg-[#D4AF37] text-black px-2 py-0.5 rounded-[2px]">Pro</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-6">System-Wide Keyboard</h2>
+          <p class="text-zinc-400 font-light leading-relaxed mb-6">
+            Dictate directly into any app on your iPhone - Messages, Mail, Slack, WhatsApp, Notes, or any text field. No need to open SpeaktoNotes first.
+          </p>
+          <p class="text-zinc-400 font-light leading-relaxed">
+            Switch to the SpeaktoNotes keyboard, tap the microphone, speak naturally, and your AI-enhanced text appears right where you need it. It's like having a personal assistant built into every app.
+          </p>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="w-full bg-black border border-zinc-800 rounded-[4px] p-8 md:p-12">
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 bg-zinc-900/60 p-3 rounded-[4px]">
+                <iconify-icon icon="solar:chat-round-dots-linear" class="text-[#BEF264]" width="20"></iconify-icon>
+                <span class="text-sm text-white font-light">Messages</span>
+                <span class="ml-auto text-[10px] text-[#BEF264] uppercase tracking-widest">Dictate</span>
+              </div>
+              <div class="flex items-center gap-3 bg-zinc-900/60 p-3 rounded-[4px]">
+                <iconify-icon icon="solar:letter-linear" class="text-[#BEF264]" width="20"></iconify-icon>
+                <span class="text-sm text-white font-light">Mail</span>
+                <span class="ml-auto text-[10px] text-[#BEF264] uppercase tracking-widest">Dictate</span>
+              </div>
+              <div class="flex items-center gap-3 bg-zinc-900/60 p-3 rounded-[4px]">
+                <iconify-icon icon="solar:hashtag-linear" class="text-[#BEF264]" width="20"></iconify-icon>
+                <span class="text-sm text-white font-light">Slack</span>
+                <span class="ml-auto text-[10px] text-[#BEF264] uppercase tracking-widest">Dictate</span>
+              </div>
+              <div class="flex items-center gap-3 bg-zinc-900/60 p-3 rounded-[4px]">
+                <iconify-icon icon="solar:document-text-linear" class="text-[#BEF264]" width="20"></iconify-icon>
+                <span class="text-sm text-white font-light">Any App</span>
+                <span class="ml-auto text-[10px] text-[#BEF264] uppercase tracking-widest">Dictate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOBILE-SPECIFIC FEATURES -->
+    <section class="bg-black py-24 px-6 border-t border-zinc-900">
+      <div class="max-w-[1000px] mx-auto text-center mb-16">
+        <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-3 block">On The Go</span>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-6">Built for Mobile</h2>
+        <p class="text-zinc-400 font-light max-w-2xl mx-auto">
+          Every feature is designed to work effortlessly on your phone - fast, intuitive, and always ready.
+        </p>
+      </div>
+
+      <div class="max-w-[1000px] mx-auto grid md:grid-cols-3 gap-8">
+        <div class="bg-zinc-900/30 border border-zinc-800 rounded-[4px] p-8">
+          <iconify-icon icon="solar:copy-linear" class="text-[#BEF264] mb-4" width="28"></iconify-icon>
+          <h3 class="text-white text-sm font-medium mb-2">One-Tap Copy</h3>
+          <p class="text-zinc-500 font-light text-xs leading-relaxed">Tap once to copy your enhanced text to the clipboard. Paste it into any app instantly.</p>
+        </div>
+        <div class="bg-zinc-900/30 border border-zinc-800 rounded-[4px] p-8">
+          <iconify-icon icon="solar:folder-linear" class="text-[#BEF264] mb-4" width="28"></iconify-icon>
+          <h3 class="text-white text-sm font-medium mb-2">Folder Organisation</h3>
+          <p class="text-zinc-500 font-light text-xs leading-relaxed">Organise notes by project, client, or topic. Create custom folders right from your phone.</p>
+        </div>
+        <div class="bg-zinc-900/30 border border-zinc-800 rounded-[4px] p-8">
+          <iconify-icon icon="solar:magnifer-linear" class="text-[#BEF264] mb-4" width="28"></iconify-icon>
+          <h3 class="text-white text-sm font-medium mb-2">Full-Text Search</h3>
+          <p class="text-zinc-500 font-light text-xs leading-relaxed">Search across all your notes instantly. Find anything, no matter when you recorded it.</p>
+        </div>
+        <div class="bg-zinc-900/30 border border-zinc-800 rounded-[4px] p-8">
+          <iconify-icon icon="solar:calendar-linear" class="text-[#BEF264] mb-4" width="28"></iconify-icon>
+          <h3 class="text-white text-sm font-medium mb-2">Calendar Events</h3>
+          <p class="text-zinc-500 font-light text-xs leading-relaxed">Create calendar events with your voice. "Meeting with Sarah Tuesday at 2pm" - done.</p>
+        </div>
+        <div class="bg-zinc-900/30 border border-zinc-800 rounded-[4px] p-8">
+          <iconify-icon icon="solar:cloud-linear" class="text-[#BEF264] mb-4" width="28"></iconify-icon>
+          <h3 class="text-white text-sm font-medium mb-2">Cloud Sync</h3>
+          <p class="text-zinc-500 font-light text-xs leading-relaxed">Record on your phone, access on your desktop. Everything syncs automatically across all devices.</p>
+        </div>
+        <div class="bg-zinc-900/30 border border-zinc-800 rounded-[4px] p-8">
+          <iconify-icon icon="solar:shield-check-linear" class="text-[#BEF264] mb-4" width="28"></iconify-icon>
+          <h3 class="text-white text-sm font-medium mb-2">Encrypted &amp; Private</h3>
+          <p class="text-zinc-500 font-light text-xs leading-relaxed">End-to-end encryption for all audio and text. Your notes stay private and secure.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM SUPPORT -->
+    <section class="bg-zinc-900/30 py-24 px-6 border-t border-zinc-900">
+      <div class="max-w-[800px] mx-auto text-center mb-16">
+        <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-3 block">Platforms</span>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-6">Available Everywhere</h2>
+      </div>
+
+      <div class="max-w-[500px] mx-auto grid grid-cols-2 gap-6">
+        <div class="bg-black border border-zinc-800 rounded-[4px] p-6 text-center hover:border-[#BEF264]/20 transition-colors">
+          <iconify-icon icon="solar:iphone-linear" class="text-zinc-400 mb-3" width="32"></iconify-icon>
+          <p class="text-white text-sm font-medium">iPhone &amp; iPad</p>
+          <p class="text-zinc-600 text-xs mt-1">iOS 15+</p>
+        </div>
+        <div class="bg-black border border-zinc-800 rounded-[4px] p-6 text-center hover:border-[#BEF264]/20 transition-colors">
+          <iconify-icon icon="solar:smartphone-linear" class="text-zinc-400 mb-3" width="32"></iconify-icon>
+          <p class="text-white text-sm font-medium">Android</p>
+          <p class="text-zinc-600 text-xs mt-1">Android 10+</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-black py-32 px-6 text-center border-t border-zinc-900">
+      <h2 class="text-3xl md:text-4xl font-medium text-white mb-4 tracking-tight">Start capturing on the go</h2>
+      <p class="text-zinc-400 font-light text-sm md:text-base mb-8">No lock-in contracts. Cancel anytime.</p>
+      <div class="flex justify-center items-center">
+        <a href="/download.html" class="bg-white text-black px-12 py-3 rounded-[4px] text-sm font-medium hover:bg-zinc-200 transition-colors w-full md:w-auto min-w-[200px] text-center">
+          Get Started
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-16 px-6 border-t border-zinc-900">
+      <div class="max-w-[1200px] mx-auto">
+         <div class="flex flex-col md:flex-row justify-between gap-12 mb-12">
+            <div>
+               <a href="/preview.html" class="flex items-center gap-2 group text-[#BEF264] mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" style="width: 12px; height: 24px; color: rgb(190, 242, 100)">
+                     <rect x="4" y="12" width="4" height="24" rx="1"></rect>
+                     <rect x="10" y="8" width="4" height="32" rx="1"></rect>
+                     <rect x="16" y="12" width="4" height="24" rx="1"></rect>
+                  </svg>
+                  <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+               </a>
+               <p class="text-zinc-500 text-xs font-light max-w-[250px]">AI-enhanced notes in seconds. Capture thoughts at the speed of speech.</p>
+            </div>
+            <div class="flex flex-wrap gap-16">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Pages</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/preview.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Home</a>
+                     <a href="/features.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Desktop Features</a>
+                     <a href="/mobile-features.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Mobile Features</a>
+                     <a href="/pricing.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Pricing</a>
+                     <a href="/download.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Download</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Legal</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/terms.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Terms of Service</a>
+                     <a href="/privacy.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Privacy Policy</a>
+                     <a href="mailto:contact@speaktonotes.com" class="text-xs text-zinc-500 hover:text-white transition-colors">Contact</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Compare</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/compare/speaktonotes-vs-letterly.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Letterly</a>
+                     <a href="/compare/speaktonotes-vs-chatgpt.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs ChatGPT</a>
+                     <a href="/compare/speaktonotes-vs-claude.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Claude</a>
+                     <a href="/compare/speaktonotes-vs-fireflies.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Fireflies</a>
+                     <a href="/compare/speaktonotes-vs-granola.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Granola</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 pb-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-2">Stay in the loop</p>
+                  <p class="text-zinc-500 text-xs font-light">Get weekly updates, tips, and news straight to your inbox.</p>
+               </div>
+               <form onsubmit="return false;" class="flex gap-2 w-full md:w-auto">
+                  <input type="email" placeholder="you@email.com" class="bg-zinc-900 border border-zinc-800 rounded-[4px] px-4 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#BEF264]/50 w-full md:w-[240px]">
+                  <button type="submit" class="bg-[#BEF264] text-black px-5 py-2 rounded-[4px] text-sm font-medium hover:bg-[#d9f99d] transition-colors whitespace-nowrap">Subscribe</button>
+               </form>
+            </div>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-zinc-500 text-xs">SpeaktoNotes &copy; 2026</span>
+            <div class="flex gap-4">
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:linkedin" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:twitter" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:instagram" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="ic:baseline-tiktok" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:youtube" width="20"></iconify-icon></a>
+            </div>
+         </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('translate-x-full');
+        document.body.classList.toggle('overflow-hidden');
+      }
+
+      // Animation Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('section > div').forEach(el => {
+        el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+        observer.observe(el);
+      });
+
+      // Phone showcase scroll animation
+      const phoneShowcase = document.getElementById('phone-showcase');
+      const phoneLeft = document.getElementById('phone-left');
+      const phoneRight = document.getElementById('phone-right');
+
+      function animatePhones() {
+        const rect = phoneShowcase.getBoundingClientRect();
+        const windowH = window.innerHeight;
+        // progress: 0 when section enters viewport, 1 when fully visible
+        const raw = 1 - (rect.top / (windowH * 0.7));
+        const progress = Math.min(Math.max(raw, 0), 1);
+        // Ease out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        // Start: spread apart (-85%, -12deg) / (-15%, 12deg)
+        // End: crossed (-65%, -6deg) / (-35%, 6deg)
+        const leftX = -85 + (20 * ease);
+        const leftR = -12 + (6 * ease);
+        const rightX = -15 - (20 * ease);
+        const rightR = 12 - (6 * ease);
+
+        phoneLeft.style.transform = `translateX(${leftX}%) rotate(${leftR}deg)`;
+        phoneRight.style.transform = `translateX(${rightX}%) rotate(${rightR}deg)`;
+      }
+
+      window.addEventListener('scroll', animatePhones, { passive: true });
+      animatePhones();
+    </script>
+
+</body></html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - SpeaktoNotes</title>
+    <meta name="description" content="Terms of Service for SpeaktoNotes. AI-powered voice-to-text on iPhone, Android, Mac, and Windows.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+    <style>
+      :root {
+          --bg-page: #000000;
+          --text-primary: #ffffff;
+          --text-secondary: #a1a1aa;
+          --tesla-btn-radius: 4px;
+      }
+      body {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          background-color: var(--bg-page);
+          color: var(--text-primary);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+      }
+
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #000; }
+      ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #BEF264; }
+
+      .legal-content h2 {
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: #fff;
+          margin-top: 3rem;
+          margin-bottom: 1rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid #27272a;
+      }
+      .legal-content h3 {
+          font-size: 1.125rem;
+          font-weight: 500;
+          color: #e4e4e7;
+          margin-top: 2rem;
+          margin-bottom: 0.75rem;
+      }
+      .legal-content p {
+          color: #a1a1aa;
+          font-weight: 300;
+          line-height: 1.75;
+          margin-bottom: 1rem;
+      }
+      .legal-content ul, .legal-content ol {
+          color: #a1a1aa;
+          font-weight: 300;
+          line-height: 1.75;
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+      }
+      .legal-content ul { list-style-type: disc; }
+      .legal-content ol { list-style-type: decimal; }
+      .legal-content li { margin-bottom: 0.25rem; }
+      .legal-content a { color: #BEF264; text-decoration: underline; }
+      .legal-content a:hover { color: #d9f99d; }
+      .legal-content strong { color: #e4e4e7; font-weight: 500; }
+      .legal-content table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 1.5rem;
+      }
+      .legal-content th, .legal-content td {
+          border: 1px solid #27272a;
+          padding: 0.75rem 1rem;
+          text-align: left;
+          color: #a1a1aa;
+          font-weight: 300;
+      }
+      .legal-content th {
+          color: #e4e4e7;
+          font-weight: 500;
+          background: rgba(39, 39, 42, 0.3);
+      }
+      .legal-content .caps-block {
+          text-transform: uppercase;
+          font-size: 0.875rem;
+      }
+    </style>
+</head>
+
+<body class="overflow-x-hidden selection:bg-[#BEF264] selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-black/80 backdrop-blur-md" id="navbar">
+      <div class="max-w-[1600px] mx-auto px-6 h-14 md:h-20 flex items-center justify-between">
+        <a href="/preview.html" class="flex items-center gap-2 z-50 group text-[#BEF264]">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" class="group-hover:text-zinc-300 transition-colors w-[12px] h-[24px]" stroke-width="2" style="width: 12px; height: 24px; color: rgb(190, 242, 100)">
+            <rect x="4" y="12" width="4" height="24" rx="1"></rect>
+            <rect x="10" y="8" width="4" height="32" rx="1"></rect>
+            <rect x="16" y="12" width="4" height="24" rx="1"></rect>
+          </svg>
+          <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          <a href="/download.html" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">Download</a>
+          <a href="/preview.html#faq" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">FAQ</a>
+          <a href="/preview.html#about" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">About</a>
+        </div>
+
+        <button onclick="toggleMenu()" class="lg:hidden text-white bg-white/10 px-3 py-1.5 rounded-[4px] text-sm font-medium backdrop-blur-md">
+          Menu
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-zinc-900/95 backdrop-blur-xl translate-x-full transition-transform duration-500 flex flex-col pt-24 px-8">
+      <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white p-2">
+        <iconify-icon icon="solar:close-circle-linear" width="32"></iconify-icon>
+      </button>
+      <div class="flex flex-col gap-6">
+        <a href="/download.html" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">Download</a>
+        <a href="/preview.html#faq" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">FAQ</a>
+        <a href="/preview.html#about" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">About</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-12 md:pt-40 md:pb-16 text-center px-6">
+      <div class="max-w-3xl mx-auto">
+        <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-4 block">Legal</span>
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6">Terms of Service</h1>
+        <p class="text-lg md:text-xl text-zinc-400 font-light max-w-xl mx-auto">Last updated: March 5, 2026</p>
+      </div>
+    </section>
+
+    <!-- TERMS CONTENT -->
+    <section class="px-6 pb-24 md:pb-32">
+      <div class="max-w-[800px] mx-auto legal-content">
+
+        <h2>1. Agreement to Our Legal Terms</h2>
+        <p>We are SpeakToNotes ("Company," "we," "us," "our"), a sole trader business registered in New Zealand with NZBN 9429053108999, operating from Nelson, New Zealand 7020.</p>
+        <p>We operate the website <a href="https://speaktonotes.com">https://speaktonotes.com</a> (the "Site"), the SpeaktoNotes mobile applications for iOS and Android, the SpeaktoNotes desktop applications for macOS and Windows, as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services").</p>
+        <p>SpeakToNotes is an AI-powered voice transcription and note-taking application that converts your spoken words into written text. The Services are available on iPhone, iPad, Android devices, Mac, and Windows.</p>
+        <p>You can contact us by email at <a href="mailto:reubenscott@speaktonotes.com">reubenscott@speaktonotes.com</a>. Our business is located in Nelson, New Zealand 7020.</p>
+        <p>These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and SpeakToNotes, concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.</p>
+        <p>Supplemental terms and conditions or documents that may be posted on the Services from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Legal Terms from time to time. We will alert you about any changes by updating the "Last updated" date of these Legal Terms, and you waive any right to receive specific notice of each such change. It is your responsibility to periodically review these Legal Terms to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Legal Terms by your continued use of the Services after the date such revised Legal Terms are posted.</p>
+        <p>The Services are intended for users who are at least 18 years old. If you are under 18, you may not use the Services. By using the Services, you represent and warrant that you are at least 18 years of age. Parents and guardians are responsible for monitoring their minor children's internet use.</p>
+        <p>We recommend that you print a copy of these Legal Terms for your records.</p>
+
+        <h3>Table of Contents</h3>
+        <ol>
+          <li>Agreement to Our Legal Terms</li>
+          <li>Our Services</li>
+          <li>Intellectual Property Rights</li>
+          <li>User Representations</li>
+          <li>User Registration</li>
+          <li>Purchases and Payment</li>
+          <li>Prohibited Activities</li>
+          <li>User Generated Content</li>
+          <li>Contribution License</li>
+          <li>Services Management</li>
+          <li>Privacy Policy</li>
+          <li>Third-Party Services and Liability</li>
+          <li>Term and Termination</li>
+          <li>Modifications and Interruptions</li>
+          <li>Governing Law</li>
+          <li>Dispute Resolution</li>
+          <li>Corrections</li>
+          <li>Disclaimer</li>
+          <li>Limitations of Liability</li>
+          <li>Indemnification</li>
+          <li>User Data</li>
+          <li>Electronic Communications, Transactions, and Signatures</li>
+          <li>Miscellaneous</li>
+          <li>Contact Us</li>
+        </ol>
+
+        <h2>2. Our Services</h2>
+        <p>The information provided when using the Services is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</p>
+        <p>Our Services are primarily intended for users in New Zealand, Australia, United Kingdom, Canada, and the United States. The Services are available across multiple platforms including iOS (iPhone and iPad), Android, macOS, and Windows.</p>
+
+        <h3>Transcription Accuracy Disclaimer</h3>
+        <p><strong>IMPORTANT - READ CAREFULLY:</strong> The Services utilize third-party artificial intelligence services (currently OpenAI and Groq) for voice transcription. You acknowledge and agree that:</p>
+        <ul>
+          <li>Transcriptions are provided for convenience only and are NOT guaranteed to be accurate, complete, or error-free</li>
+          <li>Accuracy varies significantly based on numerous factors including but not limited to: audio quality, accents, dialects, background noise, speaking pace, technical terminology, proper nouns, multiple speakers, audio clarity, recording equipment quality, and third-party AI service performance</li>
+          <li>We do not guarantee any specific level of accuracy or completeness of transcriptions</li>
+          <li>Transcriptions may contain significant errors, omissions, misinterpretations, or completely incorrect content</li>
+          <li>You are solely responsible for reviewing and verifying ALL transcribed content before relying on it for any purpose</li>
+        </ul>
+
+        <p><strong>PROHIBITED USES OF TRANSCRIPTIONS:</strong> You acknowledge that transcriptions are NOT suitable for and must NOT be relied upon for:</p>
+        <ul>
+          <li>Medical records, diagnoses, prescriptions, or any healthcare-related purposes</li>
+          <li>Legal proceedings, contracts, depositions, or legal documentation</li>
+          <li>Financial transactions, accounting records, or financial advice</li>
+          <li>Safety-critical applications or emergency services</li>
+          <li>Academic transcripts or official documentation</li>
+          <li>Any purpose where accuracy is material or where errors could result in harm, loss, or liability</li>
+        </ul>
+        <p>You agree that you will independently verify all transcribed content before using it for any material purpose. We are not liable for any errors, omissions, or inaccuracies in transcriptions or any decisions, actions, losses, damages, or harm arising from reliance on transcribed content.</p>
+
+        <h3>Subscription Requirements</h3>
+        <p>A paid subscription is required to create new voice recordings and transcriptions. After subscription cancellation or expiration, you retain read-only access to existing notes but cannot create new recordings. Read-only access continues as long as you remain an active user (login within 12 months). For complete details, see Section 6 (Purchases and Payment) and Section 21 (User Data).</p>
+
+        <h3>Platform-Specific Features</h3>
+        <p>Certain features may be available only on specific platforms:</p>
+        <ul>
+          <li>iOS Keyboard Extension (Pro plan): System-wide voice dictation keyboard available on iPhone and iPad</li>
+          <li>Calendar Integration (Pro plan): Voice-to-calendar event creation</li>
+        </ul>
+        <p>Feature availability may vary by platform and may change over time.</p>
+
+        <h2>3. Intellectual Property Rights</h2>
+        <h3>Our Intellectual Property</h3>
+        <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein (the "Marks").</p>
+        <p>Our Content and Marks are protected by copyright and trademark laws and treaties in New Zealand and around the world. The Content and Marks are provided in or through the Services "AS IS" for your personal, non-commercial use only.</p>
+
+        <h3>Your Use of Our Services</h3>
+        <p>Subject to your compliance with these Legal Terms, we grant you a non-exclusive, non-transferable, revocable license to:</p>
+        <ul>
+          <li>Access the Services on any supported platform (iOS, Android, macOS, Windows); and</li>
+          <li>Download or print a copy of any portion of the Content to which you have properly gained access</li>
+        </ul>
+        <p>solely for your personal, non-commercial use or internal business purpose.</p>
+
+        <h3>Your Content - Voice Recordings and Transcriptions</h3>
+        <p>When you use our voice transcription services on any platform:</p>
+        <ul>
+          <li><strong>Audio Files:</strong> Your voice recordings are processed immediately through our third-party transcription service providers and are deleted from our systems immediately after transcription is complete. Audio files are NOT stored by us.</li>
+          <li><strong>Transcription Notes:</strong> You retain full ownership of the resulting text transcriptions ("notes"). Transcriptions are stored in your account and accessible to you across all platforms through the Services.</li>
+        </ul>
+        <p>By using the Services, you grant us a worldwide, non-exclusive, royalty-free, transferable license to host, store, cache, display, reproduce, process, and transmit your transcription notes solely for the purposes of providing the Services to you, improving and developing the Services, complying with legal obligations, and enforcing these Legal Terms.</p>
+
+        <h3>You Are Responsible for What You Record</h3>
+        <p><strong>RECORDING CONSENT WARNING:</strong> Recording laws vary significantly by location. Some jurisdictions require consent from all parties being recorded (two-party or all-party consent), while others require consent from only one party (one-party consent). It is YOUR responsibility to know and comply with the recording laws applicable to you.</p>
+        <p><strong>Jurisdiction-Specific Recording Consent Overview</strong> (general information only, not legal advice):</p>
+        <ul>
+          <li><strong>New Zealand:</strong> Generally one-party consent</li>
+          <li><strong>Australia:</strong> Laws vary significantly by state - check your specific state laws</li>
+          <li><strong>United Kingdom:</strong> Generally one-party consent for personal recordings</li>
+          <li><strong>Canada:</strong> One-party consent at the federal level</li>
+          <li><strong>United States:</strong> Federal law allows one-party consent, but state laws vary. Eleven states require two-party or all-party consent: California, Connecticut, Florida, Illinois, Maryland, Massachusetts, Michigan, Montana, New Hampshire, Pennsylvania, and Washington</li>
+        </ul>
+
+        <h2>4. User Representations</h2>
+        <p>By using the Services on any platform (iOS, Android, macOS, or Windows), you represent and warrant that:</p>
+        <ul>
+          <li>All registration information you submit will be true, accurate, current, and complete</li>
+          <li>You will maintain the accuracy of such information</li>
+          <li>You have the legal capacity and agree to comply with these Legal Terms</li>
+          <li>You are not a minor (at least 18 years old)</li>
+          <li>You will not access the Services through automated or non-human means</li>
+          <li>You will not use the Services for any illegal or unauthorized purpose</li>
+          <li>You have the legal right to record and transcribe any audio you submit</li>
+          <li>You understand and will comply with all applicable recording and wiretapping laws</li>
+        </ul>
+
+        <h2>5. User Registration</h2>
+        <p>You are required to register to use the Services. A single account works across all platforms - iOS, Android, macOS, and Windows. You agree to keep your password confidential and will be responsible for all use of your account and password.</p>
+        <p><strong>Account Limitations:</strong> Each user may maintain only one (1) active account for personal use. Creating multiple accounts is prohibited.</p>
+        <p><strong>Account Inactivity:</strong> Accounts with expired subscriptions that have not been accessed for twelve (12) consecutive months will be considered inactive. We will send reminder emails at 9 months, 11 months, and 11.5 months of inactivity before any deletion occurs.</p>
+
+        <h2>6. Purchases and Payment</h2>
+        <p>We accept payment through Stripe, which supports Visa, Mastercard, and various payment methods as made available by Stripe from time to time. All payments shall be in New Zealand dollars (NZD) unless otherwise specified.</p>
+
+        <h3>Billing and Renewal</h3>
+        <p>Your subscription will continue and automatically renew unless canceled. We offer the following subscription options:</p>
+        <table>
+          <thead>
+            <tr><th>Plan</th><th>Price (NZD)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Basic Monthly</td><td>$17.99/month</td></tr>
+            <tr><td>Basic Annual</td><td>$179.88/year ($14.99/month)</td></tr>
+            <tr><td>Pro Monthly</td><td>$35.99/month</td></tr>
+            <tr><td>Pro Annual</td><td>$347.88/year ($28.99/month)</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Basic plans include:</strong> 250 minutes transcription/month, AI-powered voice transcription, AI cleanup/formatting, 6 in-built workflows, 5 GB storage, note search, folder organisation, copy into your workflow. Available on iOS, Android, macOS, and Windows.</p>
+        <p><strong>Pro plans include everything in Basic, plus:</strong> 1,000 minutes transcription/month (4x more), 10 GB storage (2x more), priority support, system-wide keyboard extension (iOS), and calendar integration.</p>
+
+        <h3>No Free Trial</h3>
+        <p>SpeakToNotes does not currently offer a free trial. Your subscription begins immediately upon payment.</p>
+
+        <h3>Cancellation</h3>
+        <p>You can cancel your subscription at any time by accessing your account settings or contacting us at <a href="mailto:reubenscott@speaktonotes.com">reubenscott@speaktonotes.com</a>. Your cancellation will take effect at the end of the current paid billing period. After your subscription expires:</p>
+        <ul>
+          <li>You will lose the ability to create new recordings</li>
+          <li>You will retain read-only access to all existing notes indefinitely (as long as you log in at least once every 12 months)</li>
+          <li>You can export your data at any time while your account remains active</li>
+          <li>You may reactivate your subscription at any time to regain full capabilities on all platforms</li>
+        </ul>
+
+        <h3>Refunds</h3>
+        <p><strong>Consumer Rights:</strong> If you are a consumer in New Zealand, you may have rights under the Consumer Guarantees Act 1993, Fair Trading Act 1986, or other applicable consumer protection legislation that cannot be excluded.</p>
+        <p><strong>General Policy:</strong> Subject to your statutory consumer rights, subscription payments are generally non-refundable due to the immediate access provided to digital services upon payment.</p>
+        <p>Refunds may be provided at our sole discretion for:</p>
+        <ul>
+          <li>Extended service outages (48+ consecutive hours)</li>
+          <li>Duplicate charges or billing errors</li>
+          <li>Fraudulent transactions (reported within 14 days)</li>
+          <li>Service not as described (if unresolved within 14 days)</li>
+        </ul>
+        <p>Refunds will NOT be provided for: change of mind, dissatisfaction with transcription accuracy, technical issues on your end, failure to use the Services, temporary interruptions under 48 hours, or account suspension due to Terms violations.</p>
+
+        <h3>Fee Changes</h3>
+        <p>We reserve the right to modify subscription fees at any time. For existing subscribers, we will provide at least thirty (30) days advance notice of any price increase. Price changes will not affect your current subscription term.</p>
+
+        <h2>7. Prohibited Activities</h2>
+        <p>As a user of the Services on any platform, you agree not to:</p>
+        <ul>
+          <li>Systematically retrieve data from the Services without written permission</li>
+          <li>Trick, defraud, or mislead us and other users</li>
+          <li>Circumvent security-related features</li>
+          <li>Disparage, tarnish, or harm us and/or the Services</li>
+          <li>Use information from the Services to harass or harm another person</li>
+          <li>Make improper use of our support services</li>
+          <li>Use the Services in violation of any applicable laws</li>
+          <li>Upload viruses, Trojan horses, or other harmful material</li>
+          <li>Engage in any automated use of the system</li>
+          <li>Attempt to impersonate another user</li>
+          <li>Interfere with, disrupt, or create an undue burden on the Services</li>
+          <li>Decompile, disassemble, or reverse engineer any of the software</li>
+          <li>Record or transcribe any conversation without obtaining all legally required consents</li>
+          <li>Use the Services to record content in locations where recording is prohibited by law</li>
+          <li>Use the Services to record content involving minors without proper consent</li>
+        </ul>
+
+        <h2>8. User Generated Content</h2>
+        <p>The Services allow you to create, submit, and store transcription notes and other text materials (collectively, "Contributions") across all supported platforms. Voice recordings are processed for transcription only and are not stored or considered Contributions.</p>
+        <p>You retain full ownership of all of your Contributions and any intellectual property rights associated with them. We are not liable for any statements or representations in your Contributions.</p>
+
+        <h2>9. Contribution License</h2>
+        <p>You and Services agree that we may access, store, process, and use any information and personal data that you provide and your Contributions following the terms of the Privacy Policy. We do not assert any ownership over your Contributions.</p>
+
+        <h2>10. Services Management</h2>
+        <p>We reserve the right to monitor the Services for violations, take appropriate legal action, restrict access to or disable any Contributions, and otherwise manage the Services to protect our rights and facilitate proper functioning across all platforms.</p>
+
+        <h2>11. Privacy Policy</h2>
+        <p>We care about data privacy and security. Please review our <a href="/privacy.html">Privacy Policy</a>. By using the Services on any platform (iOS, Android, macOS, or Windows), you agree to be bound by our Privacy Policy.</p>
+
+        <h3>International Data Transfers</h3>
+        <p>By using the Services, you acknowledge and consent to your data being transferred to, stored, and processed in countries other than your country of residence, including the United States.</p>
+
+        <h2>12. Third-Party Services and Liability</h2>
+        <h3>Third-Party AI Services</h3>
+        <p>The Services rely on third-party artificial intelligence service providers, currently OpenAI and Groq, for voice transcription functionality. By using the Services on any platform, you acknowledge that:</p>
+        <ul>
+          <li>Your voice recordings will be transmitted to and processed by third-party AI service providers</li>
+          <li>These third-party services have their own terms of service, privacy policies, and data handling practices</li>
+          <li>We do not control and are not responsible for the actions, policies, or practices of third-party service providers</li>
+        </ul>
+
+        <h3>Platform App Stores</h3>
+        <p>The Services may be distributed through third-party app stores including Apple App Store, Google Play Store, and Microsoft Store. Your use of the Services downloaded from these stores is also subject to the terms and conditions of those stores. We are not responsible for any app store policies or practices.</p>
+
+        <h3>Disclaimer of Liability for Third-Party Services</h3>
+        <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</strong></p>
+        <ul>
+          <li>WE ARE NOT RESPONSIBLE OR LIABLE FOR ANY DATA BREACHES, SECURITY INCIDENTS, UNAUTHORIZED ACCESS, DATA LOSS, OR PRIVACY VIOLATIONS BY THIRD-PARTY SERVICE PROVIDERS</li>
+          <li>WE ARE NOT RESPONSIBLE FOR ANY CHANGES TO THIRD-PARTY SERVICES THAT AFFECT THE FUNCTIONALITY, AVAILABILITY, OR PERFORMANCE OF OUR SERVICES</li>
+          <li>WE ARE NOT LIABLE FOR THE ACCURACY, QUALITY, OR APPROPRIATENESS OF TRANSCRIPTIONS GENERATED BY THIRD-PARTY AI SERVICES</li>
+        </ul>
+
+        <h2>13. Term and Termination</h2>
+        <p>These Legal Terms shall remain in full force and effect while you use the Services on any platform.</p>
+        <p><strong>Grounds for Termination:</strong> We may terminate or suspend your account immediately for: breach of these Legal Terms, providing false information, engaging in fraudulent or illegal activity, creating multiple accounts, engaging in prohibited activities, making illegal recordings, non-payment, chargebacks, or at our discretion.</p>
+        <p><strong>Effect of Termination:</strong> Your right to use the Services will immediately cease on all platforms (iOS, Android, macOS, and Windows).</p>
+        <p><strong>Voluntary Account Deletion:</strong> You may delete your account at any time by accessing your account settings or contacting us at <a href="mailto:reubenscott@speaktonotes.com">reubenscott@speaktonotes.com</a>. Deletion is permanent and cannot be undone.</p>
+
+        <h2>14. Modifications and Interruptions</h2>
+        <p>We reserve the right to change, modify, or remove the contents of the Services at any time, on any platform, without notice. Changes may include adding or removing features, changing the user interface, modifying functionality, updating third-party service providers, or changing subscription plans.</p>
+        <p>We cannot guarantee the Services will be available at all times on all platforms.</p>
+
+        <h2>15. Governing Law</h2>
+        <p>These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of New Zealand.</p>
+
+        <h2>16. Dispute Resolution</h2>
+        <h3>Informal Negotiations</h3>
+        <p>The Parties agree to first attempt to negotiate any Dispute informally for at least thirty (30) days before initiating formal legal proceedings.</p>
+
+        <h3>Binding Arbitration</h3>
+        <p>If unable to resolve through informal negotiations, the Dispute shall be resolved by binding arbitration under the Arbitration Act 1996 (New Zealand).</p>
+        <ul>
+          <li>For disputes under NZD $25,000: conducted remotely</li>
+          <li>For disputes NZD $25,000+: Nelson, New Zealand</li>
+        </ul>
+
+        <h3>Consumer Rights</h3>
+        <p>Nothing in this section limits or waives any rights you may have as a consumer under the laws of New Zealand or your jurisdiction of residence.</p>
+
+        <h2>17. Corrections</h2>
+        <p>We reserve the right to correct any errors, inaccuracies, or omissions and to change or update information on the Services at any time, across all platforms.</p>
+
+        <h2>18. Disclaimer</h2>
+        <p>THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS ON ALL PLATFORMS (iOS, ANDROID, macOS, AND WINDOWS). YOU AGREE THAT YOUR USE OF THE SERVICES WILL BE AT YOUR SOLE RISK.</p>
+        <p>TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+        <p>WE MAKE NO WARRANTY THAT TRANSCRIPTIONS WILL BE ACCURATE, COMPLETE, ERROR-FREE, OR FIT FOR ANY PARTICULAR PURPOSE.</p>
+        <p><strong>Consumer Rights:</strong> CERTAIN NEW ZEALAND LAWS, INCLUDING THE CONSUMER GUARANTEES ACT 1993 AND THE FAIR TRADING ACT 1986, PROVIDE CONSUMER GUARANTEES AND RIGHTS THAT CANNOT BE EXCLUDED. IF THESE LAWS APPLY TO YOU, SOME OF THE ABOVE DISCLAIMERS MAY NOT APPLY.</p>
+
+        <h2>19. Limitations of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR LIABILITY TO YOU FOR ANY CAUSE WHATSOEVER WILL AT ALL TIMES BE LIMITED TO THE LESSER OF:</p>
+        <ul>
+          <li>The amount paid by you to us during the six (6) months prior to the cause of action, or</li>
+          <li>NZD $100</li>
+        </ul>
+        <p>This limitation applies to all claims collectively across all platforms.</p>
+        <p><strong>Consumer Rights:</strong> CERTAIN NEW ZEALAND LAWS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR THE EXCLUSION OF CERTAIN DAMAGES. IF THESE LAWS APPLY TO YOU, SOME LIMITATIONS MAY NOT APPLY.</p>
+
+        <h2>20. Indemnification</h2>
+        <p>You agree to defend, indemnify, and hold harmless the Company from and against any loss, damage, liability, or expense arising from:</p>
+        <ul>
+          <li>Your Contributions and use of the Services on any platform</li>
+          <li>Breach of these Legal Terms</li>
+          <li>Violation of third-party rights</li>
+          <li>Illegal or unauthorized recordings</li>
+          <li>Any violation of applicable laws</li>
+        </ul>
+
+        <h2>21. User Data</h2>
+        <h3>Data Retention</h3>
+        <p><strong>Active Accounts:</strong> Transcription notes and account data are retained while your account is active. "Active" means you have a current paid subscription OR have logged in within the past twelve (12) months. Your data syncs across all platforms.</p>
+        <p><strong>Canceled or Expired Subscriptions:</strong> You retain read-only access to all existing notes indefinitely, provided you remain an active user. You can view, search, and export notes on any platform.</p>
+        <p><strong>Inactive Accounts:</strong> If you do not log in for 12 consecutive months, your account and all data will be scheduled for deletion. Email notifications are sent at 9, 11, and 11.5 months.</p>
+        <p><strong>Audio Recordings:</strong> Audio recordings are NOT stored and are deleted immediately after transcription, regardless of which platform you recorded on.</p>
+        <p><strong>Data Portability:</strong> You have the right to export your transcription notes at any time while your account is active.</p>
+
+        <h2>22. Electronic Communications, Transactions, and Signatures</h2>
+        <p>Visiting the Services, sending us emails, and completing online forms constitute electronic communications. You consent to receive electronic communications and agree that all agreements and notices provided electronically satisfy any legal requirement that such communication be in writing.</p>
+
+        <h2>23. Miscellaneous</h2>
+        <p><strong>Entire Agreement:</strong> These Legal Terms constitute the entire agreement between you and us.</p>
+        <p><strong>Severability:</strong> If any provision is determined to be unlawful, void, or unenforceable, it is deemed severable and does not affect remaining provisions.</p>
+        <p><strong>No Agency or Partnership:</strong> There is no joint venture, partnership, employment, or agency relationship created.</p>
+        <p><strong>Survival:</strong> All provisions which by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, indemnity obligations, limitations of liability, and dispute resolution provisions.</p>
+
+        <h2>24. Contact Us</h2>
+        <p>SpeakToNotes<br>Nelson, New Zealand 7020<br>Email: <a href="mailto:reubenscott@speaktonotes.com">reubenscott@speaktonotes.com</a></p>
+        <p>We aim to respond to all inquiries within 2 business days.</p>
+        <p>If you have a complaint that cannot be resolved through our customer service, you may have rights to escalate the matter to consumer protection authorities in New Zealand or your jurisdiction of residence.</p>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-16 px-6 border-t border-zinc-900">
+      <div class="max-w-[1200px] mx-auto">
+         <div class="flex flex-col md:flex-row justify-between gap-12 mb-12">
+            <div>
+               <a href="/preview.html" class="flex items-center gap-2 group text-[#BEF264] mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" style="width: 12px; height: 24px; color: rgb(190, 242, 100)">
+                     <rect x="4" y="12" width="4" height="24" rx="1"></rect>
+                     <rect x="10" y="8" width="4" height="32" rx="1"></rect>
+                     <rect x="16" y="12" width="4" height="24" rx="1"></rect>
+                  </svg>
+                  <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+               </a>
+               <p class="text-zinc-500 text-xs font-light max-w-[250px]">AI-enhanced notes in seconds. Capture thoughts at the speed of speech.</p>
+            </div>
+            <div class="flex flex-wrap gap-16">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Pages</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/preview.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Home</a>
+                     <a href="/features.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Desktop Features</a>
+                     <a href="/mobile-features.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Mobile Features</a>
+                     <a href="/pricing.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Pricing</a>
+                     <a href="/download.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Download</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Legal</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/terms.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Terms of Service</a>
+                     <a href="/privacy.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Privacy Policy</a>
+                     <a href="mailto:contact@speaktonotes.com" class="text-xs text-zinc-500 hover:text-white transition-colors">Contact</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Compare</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/compare/speaktonotes-vs-letterly.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Letterly</a>
+                     <a href="/compare/speaktonotes-vs-chatgpt.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs ChatGPT</a>
+                     <a href="/compare/speaktonotes-vs-claude.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Claude</a>
+                     <a href="/compare/speaktonotes-vs-fireflies.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Fireflies</a>
+                     <a href="/compare/speaktonotes-vs-granola.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Granola</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 pb-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-2">Stay in the loop</p>
+                  <p class="text-zinc-500 text-xs font-light">Get weekly updates, tips, and news straight to your inbox.</p>
+               </div>
+               <form onsubmit="return false;" class="flex gap-2 w-full md:w-auto">
+                  <input type="email" placeholder="you@email.com" class="bg-zinc-900 border border-zinc-800 rounded-[4px] px-4 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#BEF264]/50 w-full md:w-[240px]">
+                  <button type="submit" class="bg-[#BEF264] text-black px-5 py-2 rounded-[4px] text-sm font-medium hover:bg-[#d9f99d] transition-colors whitespace-nowrap">Subscribe</button>
+               </form>
+            </div>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-zinc-500 text-xs">SpeaktoNotes &copy; 2026</span>
+            <div class="flex gap-4">
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:linkedin" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:twitter" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:instagram" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="ic:baseline-tiktok" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:youtube" width="20"></iconify-icon></a>
+            </div>
+         </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('translate-x-full');
+        document.body.classList.toggle('overflow-hidden');
+      }
+
+    </script>
+
+</body></html>

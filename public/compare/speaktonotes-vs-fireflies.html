@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeaktoNotes vs Fireflies.ai (2026) — Voice Notes vs Meeting Transcription</title>
+    <meta name="description" content="Compare SpeaktoNotes and Fireflies.ai. See which AI transcription tool is better for your workflow — personal voice notes vs automated meeting recording.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <style>
+      :root { --bg-page: #000000; --text-primary: #ffffff; --text-secondary: #a1a1aa; --tesla-btn-radius: 4px; }
+      body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-page); color: var(--text-primary); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+      ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #000; } ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: #BEF264; }
+      .compare-content h2 { font-size: 1.5rem; font-weight: 500; color: #fff; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #27272a; }
+      .compare-content p { color: #a1a1aa; font-weight: 300; line-height: 1.75; margin-bottom: 1rem; }
+      .compare-content ul { color: #a1a1aa; font-weight: 300; line-height: 1.75; margin-bottom: 1rem; padding-left: 1.5rem; list-style-type: disc; }
+      .compare-content li { margin-bottom: 0.25rem; }
+      .compare-content a { color: #BEF264; text-decoration: underline; } .compare-content a:hover { color: #d9f99d; }
+      .compare-content strong { color: #e4e4e7; font-weight: 500; }
+      .compare-content table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+      .compare-content th, .compare-content td { border: 1px solid #27272a; padding: 0.75rem 1rem; text-align: left; color: #a1a1aa; font-weight: 300; font-size: 0.875rem; }
+      .compare-content th { color: #e4e4e7; font-weight: 500; background: rgba(39, 39, 42, 0.3); }
+    </style>
+</head>
+<body class="overflow-x-hidden selection:bg-[#BEF264] selection:text-black">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-black/80 backdrop-blur-md" id="navbar">
+      <div class="max-w-[1600px] mx-auto px-6 h-14 md:h-20 flex items-center justify-between">
+        <a href="/preview.html" class="flex items-center gap-2 z-50 group text-[#BEF264]">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" class="group-hover:text-zinc-300 transition-colors" style="width: 12px; height: 24px; color: rgb(190, 242, 100)"><rect x="4" y="12" width="4" height="24" rx="1"></rect><rect x="10" y="8" width="4" height="32" rx="1"></rect><rect x="16" y="12" width="4" height="24" rx="1"></rect></svg>
+          <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          <a href="/download.html" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">Download</a>
+          <a href="/preview.html#faq" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">FAQ</a>
+          <a href="/preview.html#about" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">About</a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-white bg-white/10 px-3 py-1.5 rounded-[4px] text-sm font-medium backdrop-blur-md">Menu</button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-zinc-900/95 backdrop-blur-xl translate-x-full transition-transform duration-500 flex flex-col pt-24 px-8">
+      <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white p-2"><iconify-icon icon="solar:close-circle-linear" width="32"></iconify-icon></button>
+      <div class="flex flex-col gap-6">
+        <a href="/download.html" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">Download</a>
+        <a href="/preview.html#faq" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">FAQ</a>
+        <a href="/preview.html#about" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">About</a>
+      </div>
+    </div>
+
+    <section class="pt-32 pb-12 md:pt-40 md:pb-16 text-center px-6">
+      <div class="max-w-3xl mx-auto">
+        <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-4 block">Comparison</span>
+        <h1 class="text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">SpeaktoNotes vs Fireflies</h1>
+        <p class="text-lg md:text-xl text-zinc-400 font-light max-w-xl mx-auto">Personal voice notes vs meeting bot</p>
+      </div>
+    </section>
+
+    <section class="px-6 pb-24 md:pb-32">
+      <div class="max-w-[800px] mx-auto compare-content">
+        <p>Fireflies.ai is a meeting transcription bot. SpeaktoNotes is a personal voice-to-text app. Both transcribe — but for very different use cases.</p>
+
+        <h2>At a Glance</h2>
+        <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>Feature</th><th>SpeaktoNotes</th><th>Fireflies.ai</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Purpose</strong></td><td>Personal voice-to-text for any content</td><td>Automated meeting recording &amp; transcription</td></tr>
+            <tr><td><strong>Platforms</strong></td><td>iOS, Android, Mac, Windows</td><td>Web app + meeting integrations</td></tr>
+            <tr><td><strong>Native Mobile App</strong></td><td class="text-green-400">Full-featured iOS &amp; Android apps</td><td class="text-red-400">Web-based, no native mobile app</td></tr>
+            <tr><td><strong>Windows/Mac Desktop App</strong></td><td class="text-green-400">Yes</td><td class="text-red-400">Browser only</td></tr>
+            <tr><td><strong>Meeting Bot</strong></td><td class="text-red-400">No — you record directly</td><td class="text-green-400">Joins Zoom, Teams, Meet automatically</td></tr>
+            <tr><td><strong>On-the-Go Recording</strong></td><td class="text-green-400">Record anywhere, anytime</td><td class="text-red-400">Designed for scheduled meetings</td></tr>
+            <tr><td><strong>AI Text Enhancement</strong></td><td class="text-green-400">6 Pockets (Email, Text, List, Note, Social, Meeting)</td><td>AI summaries, action items</td></tr>
+            <tr><td><strong>iOS Keyboard Extension</strong></td><td class="text-green-400">Pro — dictate in any app</td><td class="text-red-400">No</td></tr>
+            <tr><td><strong>Calendar Integration</strong></td><td class="text-green-400">Pro</td><td class="text-green-400">Calendar-linked meeting recording</td></tr>
+            <tr><td><strong>Folder Organisation</strong></td><td class="text-green-400">Yes</td><td class="text-green-400">Channels &amp; folders</td></tr>
+            <tr><td><strong>Languages</strong></td><td>Multi-language</td><td>100+ languages</td></tr>
+            <tr><td><strong>Free Plan</strong></td><td class="text-red-400">No</td><td class="text-green-400">Yes (limited — 20 AI credits/mo)</td></tr>
+            <tr><td><strong>Starting Price</strong></td><td>$17.99 NZD/mo (~$11 USD)</td><td>$10 USD/user/mo (Pro)</td></tr>
+            <tr><td><strong>Per-User Pricing</strong></td><td class="text-green-400">No — single user account</td><td>Yes — per seat</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h2>Where SpeaktoNotes Wins</h2>
+        <ul>
+          <li><strong>Use it anywhere</strong> — record voice notes walking, driving, in the office, at home. Not limited to meetings</li>
+          <li><strong>Native apps on every platform</strong> — iOS, Android, Mac, Windows. Fireflies is browser-only</li>
+          <li><strong>6 Pockets</strong> — turn speech into emails, texts, social posts, lists. Fireflies only does meeting summaries</li>
+          <li><strong>iOS keyboard extension</strong> — dictate into any app system-wide (Pro)</li>
+          <li><strong>No meeting bot</strong> — no awkward "Fireflies is recording" notification for other participants</li>
+          <li><strong>Simple pricing</strong> — one user, one price. No per-seat costs</li>
+        </ul>
+
+        <h2>Where Fireflies Wins</h2>
+        <ul>
+          <li><strong>Automated meeting recording</strong> — joins Zoom, Teams, Meet without you doing anything</li>
+          <li><strong>Team collaboration</strong> — share transcripts, comments, reactions across your team</li>
+          <li><strong>100+ languages</strong> — broader language support</li>
+          <li><strong>CRM integrations</strong> — Salesforce, HubSpot, and more</li>
+          <li><strong>Free tier</strong> — limited but available</li>
+          <li><strong>Search across meetings</strong> — find anything said in any meeting</li>
+        </ul>
+
+        <h2>Pricing Comparison</h2>
+        <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th></th><th>SpeaktoNotes</th><th>Fireflies.ai</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Free</strong></td><td>No</td><td>Yes (20 AI credits/mo)</td></tr>
+            <tr><td><strong>Basic/Pro</strong></td><td>$17.99 NZD/mo</td><td>$10 USD/user/mo</td></tr>
+            <tr><td><strong>Pro/Business</strong></td><td>$35.99 NZD/mo</td><td>$29 USD/user/mo</td></tr>
+            <tr><td><strong>Enterprise</strong></td><td>—</td><td>Custom</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="text-sm"><em>Note: Fireflies charges per user. SpeaktoNotes is a single-user price with no seat fees.</em></p>
+
+        <h2>The Verdict</h2>
+        <p><strong>Choose SpeaktoNotes</strong> if you need a personal voice-to-text tool that works everywhere — not just meetings. Record thoughts on the go, dictate emails, capture ideas, take notes. Native apps on every platform, no meeting bot required.</p>
+        <p><strong>Choose Fireflies</strong> if your primary need is automated meeting transcription for a team, with CRM integrations and collaborative features. Fireflies is a team productivity tool; SpeaktoNotes is a personal productivity tool.</p>
+        <p>Many users use both — Fireflies for team meetings, SpeaktoNotes for everything else.</p>
+
+
+        <h2>See How SpeaktoNotes Compares to Other Tools</h2>
+        <ul>
+          <li><a href="/compare/speaktonotes-vs-letterly.html">SpeaktoNotes vs Letterly</a></li>
+          <li><a href="/compare/speaktonotes-vs-chatgpt.html">SpeaktoNotes vs ChatGPT</a></li>
+          <li><a href="/compare/speaktonotes-vs-claude.html">SpeaktoNotes vs Claude</a></li>
+          <li><a href="/compare/speaktonotes-vs-granola.html">SpeaktoNotes vs Granola</a></li>
+        </ul>
+        <p class="text-sm mt-6"><strong>More:</strong> <a href="/pricing.html">View Pricing</a> &middot; <a href="/features.html">Desktop Features</a> &middot; <a href="/mobile-features.html">Mobile Features</a> &middot; <a href="/preview.html#faq">FAQ</a></p>
+      </div>
+    </section>
+
+    <footer class="bg-black py-16 px-6 border-t border-zinc-900">
+      <div class="max-w-[1200px] mx-auto">
+         <div class="flex flex-col md:flex-row justify-between gap-12 mb-12">
+            <div>
+               <a href="/preview.html" class="flex items-center gap-2 group text-[#BEF264] mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" style="width: 12px; height: 24px; color: rgb(190, 242, 100)"><rect x="4" y="12" width="4" height="24" rx="1"></rect><rect x="10" y="8" width="4" height="32" rx="1"></rect><rect x="16" y="12" width="4" height="24" rx="1"></rect></svg>
+                  <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+               </a>
+               <p class="text-zinc-500 text-xs font-light max-w-[250px]">AI-enhanced notes in seconds. Capture thoughts at the speed of speech.</p>
+            </div>
+            <div class="flex flex-wrap gap-16">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Pages</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/preview.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Home</a>
+                     <a href="/features.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Desktop Features</a>
+                     <a href="/mobile-features.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Mobile Features</a>
+                     <a href="/pricing.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Pricing</a>
+                     <a href="/download.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Download</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Legal</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/terms.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Terms of Service</a>
+                     <a href="/privacy.html" class="text-xs text-zinc-500 hover:text-white transition-colors">Privacy Policy</a>
+                     <a href="mailto:contact@speaktonotes.com" class="text-xs text-zinc-500 hover:text-white transition-colors">Contact</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Compare</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/compare/speaktonotes-vs-letterly.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Letterly</a>
+                     <a href="/compare/speaktonotes-vs-chatgpt.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs ChatGPT</a>
+                     <a href="/compare/speaktonotes-vs-claude.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Claude</a>
+                     <a href="/compare/speaktonotes-vs-fireflies.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Fireflies</a>
+                     <a href="/compare/speaktonotes-vs-granola.html" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Granola</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 pb-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-2">Stay in the loop</p>
+                  <p class="text-zinc-500 text-xs font-light">Get weekly updates, tips, and news straight to your inbox.</p>
+               </div>
+               <form onsubmit="return false;" class="flex gap-2 w-full md:w-auto">
+                  <input type="email" placeholder="you@email.com" class="bg-zinc-900 border border-zinc-800 rounded-[4px] px-4 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#BEF264]/50 w-full md:w-[240px]">
+                  <button type="submit" class="bg-[#BEF264] text-black px-5 py-2 rounded-[4px] text-sm font-medium hover:bg-[#d9f99d] transition-colors whitespace-nowrap">Subscribe</button>
+               </form>
+            </div>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-zinc-500 text-xs">SpeaktoNotes &copy; 2026</span>
+            <div class="flex gap-4">
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:linkedin" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:twitter" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:instagram" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="ic:baseline-tiktok" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:youtube" width="20"></iconify-icon></a>
+            </div>
+         </div>
+      </div>
+    </footer>
+    <script>function toggleMenu(){const menu=document.getElementById('mobile-menu');menu.classList.toggle('translate-x-full');document.body.classList.toggle('overflow-hidden');}</script>
+</body></html>
