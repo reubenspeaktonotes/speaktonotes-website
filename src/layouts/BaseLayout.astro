@@ -1,0 +1,29 @@
+---
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPage?: string;
+}
+
+const { title, description = 'AI-enhanced notes in seconds.', currentPage = 'home' } = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&family=Instrument+Serif:wght@400;500;600;700&display=swap" />
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" is:inline></script>
+</head>
+<body class="text-zinc-400 overflow-x-hidden relative bg-black selection:bg-[#BEF264] selection:text-black">
+  <Nav currentPage={currentPage} />
+  <slot />
+</body>
+</html>

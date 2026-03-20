@@ -1,0 +1,484 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="SpeaktoNotes - AI-Enhanced Note Taking" currentPage="home">
+  <main class="relative w-full overflow-hidden">
+    <!-- HERO -->
+    <div class="overflow-hidden min-h-[92vh] flex flex-col bg-transparent h-[92vh] z-30 pt-24 pb-0 relative justify-center">
+      <!-- Background image slideshow -->
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <img src="/images/speaktonotes1.png" alt="" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
+        <img src="/images/speaktonotes2.png" alt="" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+        <img src="/images/speaktonotes3.png" alt="" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+        <img src="/images/speaktonotes4.png" alt="" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+        <div class="absolute inset-0 bg-black/40"></div>
+      </div>
+      <div class="absolute inset-0 z-[1] pointer-events-none"></div>
+      <div class="z-10 flex flex-col -translate-y-5 md:-translate-y-10 gap-2 md:gap-4 text-center max-w-6xl mx-auto px-6 relative items-center">
+        <h1 class="md:text-[6.1rem] leading-[1.1] md:mb-6 sm:text-5xl text-4xl font-semibold text-[#BEF264] tracking-tight mb-3">
+          <span class="block text-zinc-200">
+            <span class="block text-[#BEF264] font-semibold tracking-tighter" style="font-family: 'Sora', sans-serif; font-weight: 700;">
+              SpeaktoNotes
+            </span>
+            <span class="block md:text-[2.75rem] sm:text-2xl text-xl font-light text-zinc-200 mt-6 tracking-tight" style="letter-spacing: -0.02em;">
+              Best app for note-taking.
+            </span>
+          </span>
+        </h1>
+        <div class="flex flex-row gap-3 sm:gap-5 sm:w-auto sm:px-0 w-full mt-2 translate-y-[30%] items-center justify-center">
+          <a href="/#contact" class="sm:flex-none sm:w-auto hover:bg-[#d9f58c] transition-colors flex active:scale-95 duration-200 whitespace-nowrap text-xs font-bold text-black bg-[#BEF264] rounded-full pt-2.5 pr-5 pb-2.5 pl-5 shadow-[0_0_24px_rgba(190,242,100,0.2)] gap-x-2 gap-y-x-2 items-center justify-center">
+            Get App
+          </a>
+          <button class="sm:flex-none sm:w-auto hover:bg-zinc-800 transition-colors flex active:scale-95 duration-200 text-xs font-bold text-white bg-zinc-900 border-zinc-800 border rounded-full px-5 py-2.5 gap-2 items-center justify-center whitespace-nowrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-zinc-400">
+              <polygon points="6 3 20 12 6 21 6 3"></polygon>
+            </svg>
+            Watch Demo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: FEATURES -->
+    <div class="md:py-24 z-20 bg-zinc-50 pt-20 pb-20 relative" id="features">
+      <div class="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px] h-full w-full"></div>
+      <section class="z-10 max-w-7xl mx-auto px-6 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-24 gap-12 items-center">
+          <div class="z-10 relative">
+            <div class="flex items-center gap-3 mb-6"></div>
+            <h2 class="md:text-5xl leading-[1.1] text-3xl font-medium text-zinc-900 tracking-tight mb-6">
+              Record.
+              <br />
+              <span class="inline-block relative">
+                Enhance
+                <span class="absolute bottom-1 left-0 w-full h-3 bg-[#BEF264]/40 -z-10 skew-x-12"></span>
+              </span>
+              .
+              <br />
+              Done.
+            </h2>
+            <div class="relative max-w-xl mb-8">
+              <p class="md:text-lg leading-relaxed text-base text-zinc-500">
+                No setup. No learning curve. Just works.
+              </p>
+            </div>
+          </div>
+          <div class="relative group/image perspective-normal w-full lg:max-w-full mx-auto">
+            <div class="z-10 flex gap-4 md:gap-6 relative items-center justify-center">
+              <div class="relative w-1/2 max-w-xs">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/ba9bf46a-2260-4614-adbc-7493040b1e3f_800w.png" alt="SpeaktoNotes Mobile Interface" class="block origin-center w-full max-w-full h-auto object-contain mx-auto scale-100 sm:scale-125 md:scale-[2]" />
+              </div>
+              <div class="relative w-1/2 max-w-xs">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/66a2d31d-10d0-4be3-8998-a4d86e8fdee3_800w.png" alt="SpeaktoNotes Recording Screen" class="z-20 md:translate-x-16 bg-transparent w-[60%] h-auto object-2xl relative shadow-2xl translate-x-8" style="background: none; border: medium; box-shadow: none;" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SECTION 3: NUMBERS & CUSTOMIZATION -->
+    <div class="w-full flex flex-col">
+      <div class="py-20 md:py-24 z-[5] bg-white w-full relative">
+        <section class="max-w-7xl mx-auto px-6 relative">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-zinc-900 mb-6 font-medium leading-[1.1]">
+              Efficiency is at the
+              <span style="background: linear-gradient(120deg, #BEF264 0%, #84cc16 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                core
+              </span>
+              .
+            </h2>
+            <p class="md:text-lg leading-relaxed text-base font-light text-zinc-500 mb-8">SpeaktoNotes is built to capture and organise information as effectively as possible.</p>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-4xl">
+            <div class="grid grid-cols-6 w-full z-10 relative items-start gap-0">
+              <!-- Emails -->
+              <div class="flex flex-col items-center gap-1.5 sm:gap-2.5 min-w-0 px-0.5 sm:px-1">
+                <span class="inline-flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-800">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </span>
+                <span class="text-[9px] sm:text-xs font-medium text-zinc-500 text-center leading-tight break-words w-full">Emails</span>
+              </div>
+              <!-- Meeting Notes -->
+              <div class="flex flex-col items-center gap-1.5 sm:gap-2.5 min-w-0 px-0.5 sm:px-1">
+                <span class="inline-flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-800">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </span>
+                <span class="text-[9px] sm:text-xs font-medium text-zinc-500 text-center leading-tight break-words w-full">Meeting Notes</span>
+              </div>
+              <!-- Property Notes -->
+              <div class="flex flex-col items-center gap-1.5 sm:gap-2.5 min-w-0 px-0.5 sm:px-1">
+                <span class="inline-flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-800">
+                    <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                    <path d="M9 22v-4h6v4"></path>
+                    <path d="M8 6h.01"></path>
+                    <path d="M16 6h.01"></path>
+                    <path d="M12 6h.01"></path>
+                    <path d="M12 10h.01"></path>
+                    <path d="M12 14h.01"></path>
+                    <path d="M16 10h.01"></path>
+                    <path d="M16 14h.01"></path>
+                    <path d="M8 10h.01"></path>
+                    <path d="M8 14h.01"></path>
+                  </svg>
+                </span>
+                <span class="text-[9px] sm:text-xs font-medium text-zinc-500 text-center leading-tight break-words w-full">Property Notes</span>
+              </div>
+              <!-- Job Quotes -->
+              <div class="flex flex-col items-center gap-1.5 sm:gap-2.5 min-w-0 px-0.5 sm:px-1">
+                <span class="inline-flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-800">
+                    <rect width="16" height="20" x="4" y="2" rx="2"></rect>
+                    <line x1="8" x2="16" y1="6" y2="6"></line>
+                    <line x1="16" x2="16" y1="14" y2="18"></line>
+                    <path d="M16 10h.01"></path>
+                    <path d="M12 10h.01"></path>
+                    <path d="M8 10h.01"></path>
+                    <path d="M12 14h.01"></path>
+                    <path d="M8 14h.01"></path>
+                    <path d="M12 18h.01"></path>
+                    <path d="M8 18h.01"></path>
+                  </svg>
+                </span>
+                <span class="text-[9px] sm:text-xs font-medium text-zinc-500 text-center leading-tight break-words w-full">Job Quotes</span>
+              </div>
+              <!-- Pipeline Updates -->
+              <div class="flex flex-col items-center gap-1.5 sm:gap-2.5 min-w-0 px-0.5 sm:px-1">
+                <span class="inline-flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-800">
+                    <path d="M8 6v7"></path>
+                    <path d="M16 6v11"></path>
+                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                  </svg>
+                </span>
+                <span class="text-[9px] sm:text-xs font-medium text-zinc-500 text-center leading-tight break-words w-full">Pipeline Updates</span>
+              </div>
+              <!-- Content Ideas -->
+              <div class="flex flex-col items-center gap-1.5 sm:gap-2.5 min-w-0 px-0.5 sm:px-1">
+                <span class="inline-flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-800">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg>
+                </span>
+                <span class="text-[9px] sm:text-xs font-medium text-zinc-500 text-center leading-tight break-words w-full">Content Ideas</span>
+              </div>
+            </div>
+
+            <!-- Animated SVG lines -->
+            <div class="relative mt-4 sm:mt-6 h-40 sm:h-56 md:h-72 w-full">
+              <svg viewBox="0 0 900 360" class="absolute inset-0 w-full h-full" fill="none" preserveAspectRatio="none" stroke-width="2" style="color: #a1a1aa;">
+                <circle cx="75" cy="30" r="4" fill="#000000"><animate attributeName="opacity" values="0.1;1;0.1" dur="3s" repeatCount="indefinite"></animate></circle>
+                <circle cx="225" cy="30" r="4" fill="#000000"><animate attributeName="opacity" values="0.1;1;0.1" dur="3s" begin="0.2s" repeatCount="indefinite"></animate></circle>
+                <circle cx="375" cy="30" r="4" fill="#000000"><animate attributeName="opacity" values="0.1;1;0.1" dur="3s" begin="0.4s" repeatCount="indefinite"></animate></circle>
+                <circle cx="525" cy="30" r="4" fill="#000000"><animate attributeName="opacity" values="0.1;1;0.1" dur="3s" begin="0.6s" repeatCount="indefinite"></animate></circle>
+                <circle cx="675" cy="30" r="4" fill="#000000"><animate attributeName="opacity" values="0.1;1;0.1" dur="3s" begin="0.8s" repeatCount="indefinite"></animate></circle>
+                <circle cx="825" cy="30" r="4" fill="#000000"><animate attributeName="opacity" values="0.1;1;0.1" dur="3s" begin="1s" repeatCount="indefinite"></animate></circle>
+                <!-- Static lines -->
+                <path d="M450 300 C 450 200, 75 120, 75 30" stroke="#f4f4f5" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+                <path d="M450 300 C 450 210, 225 130, 225 30" stroke="#f4f4f5" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+                <path d="M450 300 C 450 150, 375 80, 375 30" stroke="#f4f4f5" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+                <path d="M450 300 C 450 150, 525 80, 525 30" stroke="#f4f4f5" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+                <path d="M450 300 C 450 210, 675 130, 675 30" stroke="#f4f4f5" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+                <path d="M450 300 C 450 200, 825 120, 825 30" stroke="#f4f4f5" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+                <!-- Animated lines -->
+                <path d="M450 300 C 450 200, 75 120, 75 30" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 600; stroke-dashoffset: 600"><animate attributeName="stroke-dashoffset" values="600;0;600" dur="3s" begin="0s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"></animate></path>
+                <path d="M450 300 C 450 210, 225 130, 225 30" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 520; stroke-dashoffset: 520"><animate attributeName="stroke-dashoffset" values="520;0;520" dur="3s" begin="0.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"></animate></path>
+                <path d="M450 300 C 450 150, 375 80, 375 30" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 450; stroke-dashoffset: 450"><animate attributeName="stroke-dashoffset" values="450;0;450" dur="3s" begin="0.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"></animate></path>
+                <path d="M450 300 C 450 150, 525 80, 525 30" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 450; stroke-dashoffset: 450"><animate attributeName="stroke-dashoffset" values="450;0;450" dur="3s" begin="0.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"></animate></path>
+                <path d="M450 300 C 450 210, 675 130, 675 30" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 520; stroke-dashoffset: 520"><animate attributeName="stroke-dashoffset" values="520;0;520" dur="3s" begin="0.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"></animate></path>
+                <path d="M450 300 C 450 200, 825 120, 825 30" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 600; stroke-dashoffset: 600"><animate attributeName="stroke-dashoffset" values="600;0;600" dur="3s" begin="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"></animate></path>
+              </svg>
+              <div class="absolute bottom-2 md:-bottom-2 left-1/2 -translate-x-1/2">
+                <span class="inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-[#0a0a0a] ring-4 ring-black/5 shadow-2xl relative z-20">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" class="w-6 h-12 sm:w-7 sm:h-14 text-[#BEF264]">
+                    <rect x="4" y="12" width="4" height="24" rx="2"></rect>
+                    <rect x="10" y="8" width="4" height="32" rx="2"></rect>
+                    <rect x="16" y="12" width="4" height="24" rx="2"></rect>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- CUSTOMIZATION / MADE FOR PROFESSIONALS -->
+      <div class="py-20 md:py-24 border-y z-10 bg-[#0a0a0a] w-full border-zinc-800 relative">
+        <div class="absolute inset-0 z-0 pointer-events-none bg-grid h-full"></div>
+        <section class="z-10 max-w-7xl mx-auto px-6 relative">
+          <div class="flex flex-col md:mb-20 text-center mb-16 items-center">
+            <h2 class="text-3xl md:text-5xl font-medium text-white tracking-tight mb-6 leading-[1.1]">
+              Made for <span class="text-white">Pro</span>fessionals.
+            </h2>
+            <p class="md:text-base leading-relaxed text-sm font-light text-zinc-400 max-w-2xl">Built for fast paced, detail-oriented, and always on the move professionals.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
+            <!-- Card 1: Shield -->
+            <div class="flex flex-col rounded-[24px] border border-zinc-800/80 bg-zinc-900/30 hover:bg-zinc-900/40 transition-colors duration-300 overflow-hidden relative" style="min-height: 520px;">
+              <div class="relative flex-1 flex items-center justify-center p-8 sm:p-12 min-h-[300px]">
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div class="w-48 h-48 bg-[#BEF264]/[0.03] blur-3xl rounded-full"></div>
+                </div>
+                <svg viewBox="0 0 400 400" class="w-full max-w-[280px] h-auto relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="shieldGrad" x1="200" y1="80" x2="200" y2="330" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#BEF264" stop-opacity="0.12"></stop>
+                      <stop offset="100%" stop-color="#BEF264" stop-opacity="0.02"></stop>
+                    </linearGradient>
+                  </defs>
+                  <path d="M200 20 L360 70 V230 C360 320 280 370 200 400 C120 370 40 320 40 230 V70 Z" stroke="rgba(190,242,100,0.05)" stroke-width="1.5" fill="none"></path>
+                  <path d="M200 50 L320 85 V230 C320 300 250 340 200 365 C150 340 80 300 80 230 V85 Z" stroke="rgba(190,242,100,0.15)" stroke-width="1.5" fill="none"></path>
+                  <path d="M200 80 L280 105 V220 C280 270 230 310 200 330 C170 310 120 270 120 220 V105 Z" fill="url(#shieldGrad)" stroke="rgba(190,242,100,0.4)" stroke-width="2"></path>
+                </svg>
+              </div>
+              <div class="px-8 pb-12 pt-4 text-center flex flex-col items-center relative z-20">
+                <h3 class="text-2xl md:text-3xl lg:text-[32px] font-medium text-white tracking-tight leading-[1.15] mb-4 max-w-[300px]">
+                  Absolute Privacy<br />for your notes.
+                </h3>
+              </div>
+            </div>
+
+            <!-- Card 2: Rays & Pill -->
+            <div class="flex flex-col rounded-[24px] border border-zinc-800/80 bg-zinc-900/30 hover:bg-zinc-900/40 transition-colors duration-300 overflow-hidden relative" style="min-height: 520px;">
+              <div class="relative flex-1 flex items-center justify-center p-8 sm:p-12 min-h-[300px] overflow-hidden">
+                <svg viewBox="0 0 400 400" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g stroke="rgba(190,242,100,0.06)" stroke-width="1.5" stroke-linecap="round">
+                    <line x1="200" y1="200" x2="200" y2="-100"></line>
+                    <line x1="200" y1="200" x2="200" y2="500"></line>
+                    <line x1="200" y1="200" x2="-100" y2="200"></line>
+                    <line x1="200" y1="200" x2="500" y2="200"></line>
+                    <line x1="200" y1="200" x2="412" y2="-12"></line>
+                    <line x1="200" y1="200" x2="-12" y2="412"></line>
+                    <line x1="200" y1="200" x2="-12" y2="-12"></line>
+                    <line x1="200" y1="200" x2="412" y2="412"></line>
+                    <line x1="200" y1="200" x2="300" y2="-82"></line>
+                    <line x1="200" y1="200" x2="100" y2="482"></line>
+                    <line x1="200" y1="200" x2="100" y2="-82"></line>
+                    <line x1="200" y1="200" x2="300" y2="482"></line>
+                    <line x1="200" y1="200" x2="482" y2="100"></line>
+                    <line x1="200" y1="200" x2="-82" y2="300"></line>
+                    <line x1="200" y1="200" x2="482" y2="300"></line>
+                    <line x1="200" y1="200" x2="-82" y2="100"></line>
+                  </g>
+                </svg>
+                <div class="relative z-10 inline-flex items-center gap-2.5 bg-zinc-900/90 border border-[#BEF264]/20 rounded-full px-6 py-3 shadow-[0_4px_24px_rgba(0,0,0,0.4)] backdrop-blur-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BEF264" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                  <span class="text-base font-medium text-[#BEF264] tracking-tight">7x Faster </span>
+                </div>
+              </div>
+              <div class="px-8 pb-12 pt-4 text-center flex flex-col items-center relative z-20">
+                <h3 class="md:text-3xl lg:text-[32px] leading-[1.15] text-2xl font-medium text-white tracking-tight max-w-[300px] mb-4">7x Faster<br />than average.</h3>
+                <p class="md:text-lg leading-relaxed text-base font-light text-zinc-400 max-w-sm"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="z-10 max-w-7xl mx-auto px-6 mt-20 md:mt-24 relative" id="testimonials">
+          <div class="flex flex-col md:mb-20 text-center mb-12 items-center">
+            <h2 class="text-3xl md:text-5xl font-medium text-white tracking-tight mb-6 leading-[1.1]">
+              Loved by <span class="text-white">hard workers</span>.
+            </h2>
+            <p class="md:text-base leading-relaxed text-sm font-light text-zinc-400 max-w-2xl">SpeaktoNotes is built for work professionals and this is what you guys said.</p>
+          </div>
+
+          <div class="relative flex pb-10 items-center justify-center overflow-visible">
+            <div class="testimonial-container flex flex-col sm:scale-100 w-full max-w-3xl mx-auto scale-[0.85] items-center justify-center relative">
+              <div class="relative w-full mx-auto z-10">
+                <!-- Back card -->
+                <div class="absolute -inset-x-6 -top-3 translate-y-2 rotate-[-2deg] rounded-[2rem] border border-white/10 bg-white/[0.02] h-full hidden sm:block transition-transform duration-500 ease-out"></div>
+                <!-- Middle card -->
+                <div class="absolute -inset-x-3 top-1 translate-y-2 rotate-[2deg] rounded-[2rem] border border-white/10 bg-white/[0.04] h-full hidden sm:block transition-transform duration-500 ease-out"></div>
+                <!-- Center card -->
+                <div class="relative w-full rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] shadow-2xl backdrop-blur-xl overflow-hidden rotate-[-1.5deg] transition-transform duration-500 ease-out">
+                  <div class="p-8 sm:p-10 flex flex-col h-full">
+                    <div class="flex gap-1 text-[#BEF264] mb-6">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.25" class="lucide lucide-star w-5 h-5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.25" class="lucide lucide-star w-5 h-5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.25" class="lucide lucide-star w-5 h-5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.25" class="lucide lucide-star w-5 h-5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.25" class="lucide lucide-star w-5 h-5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <p id="review-text" class="text-white font-medium tracking-tight text-lg sm:text-2xl leading-relaxed sm:leading-9 mb-8">
+                      "Working with SpeaktoNotes was a game‑changer. It translates my spoken thoughts into polished meeting notes perfectly — fast, reliable, and incredibly accurate."
+                    </p>
+                    <div class="mt-auto flex items-center gap-4">
+                      <div>
+                        <div id="review-name" class="text-base text-white/90 font-medium tracking-tight">Jordan Avery</div>
+                        <div id="review-role" class="text-[11px] text-white/60 font-medium uppercase tracking-widest mt-0.5">Product Manager</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="flex gap-4 z-20 mt-12 relative items-center justify-center">
+                <button id="review-prev" class="group inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/15 hover:text-[#BEF264] transition-all duration-300 shadow-sm active:scale-95">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:-translate-x-1"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+                </button>
+                <button id="review-next" class="group inline-flex hover:bg-white/15 hover:text-[#BEF264] transition-all duration-300 active:scale-95 text-white bg-white/5 w-12 h-12 border-white/10 border rounded-full shadow-sm items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- SECTION 6: FAQ -->
+    <div class="md:py-24 z-[2] bg-[#0a0a0a] border-zinc-800 border-t pt-20 pb-20 relative">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+      <section class="z-10 max-w-3xl mr-auto ml-auto pr-6 pl-6 relative" id="pricing">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-5xl font-medium text-white tracking-tight mb-4 md:mb-6 leading-[1.1]">
+            Frequently Asked Questions
+          </h2>
+        </div>
+        <div class="space-y-4">
+          <details class="group bg-zinc-900/40 shadow-sm border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-zinc-700 open:bg-zinc-800/30 open:border-zinc-700">
+            <summary class="flex justify-between items-center p-5 md:p-6 cursor-pointer list-none select-none">
+              <span class="text-base md:text-lg font-normal text-zinc-200 group-hover:text-white transition-colors">What is SpeaktoNotes and how does it work?</span>
+              <span class="text-zinc-500 group-hover:text-white transition-transform duration-300 group-open:rotate-45 flex items-center justify-center">
+                <iconify-icon icon="lucide:plus" width="24" height="24" stroke-width="1.5"></iconify-icon>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-zinc-400 leading-relaxed text-sm md:text-base font-light">
+              SpeaktoNotes is an AI powered voice to text app that turns your spoken words into clean, formatted notes instantly. Available on Mac, Windows, iPhone, and Android, simply press record, speak naturally, and our AI transcribes and formats your notes automatically. Whether it's meeting notes, journal entries, emails, or to do lists, SpeaktoNotes uses advanced AI to deliver accurate transcriptions with smart formatting, so you spend less time typing and more time doing.
+            </div>
+          </details>
+
+          <details class="group bg-zinc-900/40 shadow-sm border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-zinc-700 open:bg-zinc-800/30 open:border-zinc-700">
+            <summary class="flex justify-between items-center p-5 md:p-6 cursor-pointer list-none select-none">
+              <span class="text-base md:text-lg font-normal text-zinc-200 group-hover:text-white transition-colors">How accurate is the AI voice transcription?</span>
+              <span class="text-zinc-500 group-hover:text-white transition-transform duration-300 group-open:rotate-45 flex items-center justify-center">
+                <iconify-icon icon="lucide:plus" width="24" height="24" stroke-width="1.5"></iconify-icon>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-zinc-400 leading-relaxed text-sm md:text-base font-light">
+              SpeaktoNotes uses state of the art AI transcription technology to deliver highly accurate voice to text conversion across all your devices. The AI handles natural speech patterns, accents, filler words, and punctuation automatically. Beyond basic transcription, our AI formatting engine cleans up your notes, removing "ums" and "ahs," adding proper punctuation, and organising your thoughts into clear, readable text. The result is polished notes that read like you typed them.
+            </div>
+          </details>
+
+          <details class="group bg-zinc-900/40 shadow-sm border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-zinc-700 open:bg-zinc-800/30 open:border-zinc-700">
+            <summary class="flex justify-between items-center p-5 md:p-6 cursor-pointer list-none select-none">
+              <span class="text-base md:text-lg font-normal text-zinc-200 group-hover:text-white transition-colors">What's the difference between the Basic and Pro plans?</span>
+              <span class="text-zinc-500 group-hover:text-white transition-transform duration-300 group-open:rotate-45 flex items-center justify-center">
+                <iconify-icon icon="lucide:plus" width="24" height="24" stroke-width="1.5"></iconify-icon>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-zinc-400 leading-relaxed text-sm md:text-base font-light">
+              The Basic plan ($14.99 NZD/mo annually) includes 250 minutes of AI transcription per month, AI formatting, role based workflows, and 5 GB of cloud storage, perfect for day to day voice notes. The Pro plan ($28.99 NZD/mo annually) is built for power users and includes 1,000 minutes per month, everything in Basic, plus a keyboard shortcut for instant recording, custom writing styles, custom workflows, calendar integration, voice AI chat, and 10 GB of cloud storage. Both plans come with a 20% discount when billed annually.
+            </div>
+          </details>
+
+          <details class="group bg-zinc-900/40 shadow-sm border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-zinc-700 open:bg-zinc-800/30 open:border-zinc-700">
+            <summary class="flex justify-between items-center p-5 md:p-6 cursor-pointer list-none select-none">
+              <span class="text-base md:text-lg font-normal text-zinc-200 group-hover:text-white transition-colors">Can I use SpeaktoNotes for meeting notes, emails, and other workflows?</span>
+              <span class="text-zinc-500 group-hover:text-white transition-transform duration-300 group-open:rotate-45 flex items-center justify-center">
+                <iconify-icon icon="lucide:plus" width="24" height="24" stroke-width="1.5"></iconify-icon>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-zinc-400 leading-relaxed text-sm md:text-base font-light">
+              Absolutely! SpeaktoNotes comes with powerful built in role based workflows designed for real world use cases. You can transcribe meeting notes, draft emails, write journal entries, create to do lists, and more, all by voice. Pro users can create fully custom workflows tailored to their specific needs, set their own writing tone and style, and even integrate with their calendar to automatically tag notes to upcoming meetings. Simply speak, and SpeaktoNotes formats everything into the right structure for you.
+            </div>
+          </details>
+
+          <details class="group bg-zinc-900/40 shadow-sm border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-zinc-700 open:bg-zinc-800/30 open:border-zinc-700">
+            <summary class="flex justify-between items-center p-5 md:p-6 cursor-pointer list-none select-none">
+              <span class="text-base md:text-lg font-normal text-zinc-200 group-hover:text-white transition-colors">What devices does SpeaktoNotes work on?</span>
+              <span class="text-zinc-500 group-hover:text-white transition-transform duration-300 group-open:rotate-45 flex items-center justify-center">
+                <iconify-icon icon="lucide:plus" width="24" height="24" stroke-width="1.5"></iconify-icon>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-zinc-400 leading-relaxed text-sm md:text-base font-light">
+              SpeaktoNotes is available on Mac, Windows, iPhone, and Android, so you can capture voice notes wherever you are. Your notes sync across all your devices, meaning you can record on your phone during a meeting and access the formatted notes on your computer later. Whether you're at your desk or on the go, SpeaktoNotes works seamlessly across all major platforms.
+            </div>
+          </details>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <Footer />
+  </main>
+
+  <script is:inline>
+    // Hero background slideshow
+    (function() {
+      const slides = document.querySelectorAll('.hero-slide');
+      let current = 0;
+      if (slides.length > 1) {
+        setInterval(() => {
+          slides[current].style.opacity = '0';
+          current = (current + 1) % slides.length;
+          slides[current].style.opacity = '1';
+        }, 5000);
+      }
+    })();
+
+    // Testimonial carousel
+    const reviews = [
+      {
+        text: '\u201CWorking with SpeaktoNotes was a game\u2011changer. It translates my spoken thoughts into polished meeting notes perfectly \u2014 fast, reliable, and incredibly accurate.\u201D',
+        name: 'Jordan Avery',
+        role: 'Product Manager',
+      },
+      {
+        text: '\u201CThe enterprise security and absolute privacy won us over. Being able to record sensitive client meetings without worrying about data usage is invaluable.\u201D',
+        name: 'Sarah Chen',
+        role: 'Legal Partner',
+      },
+      {
+        text: '\u201CI use it on my commute every day. It structures my chaotic voice memos into actionable task lists and flawless project summaries by the time I reach the office.\u201D',
+        name: 'Marcus Thorne',
+        role: 'Startup Founder',
+      }
+    ];
+
+    let currentReviewIndex = 0;
+
+    function changeReview(dir) {
+      currentReviewIndex = (currentReviewIndex + dir + reviews.length) % reviews.length;
+      const textEl = document.getElementById('review-text');
+      const nameEl = document.getElementById('review-name');
+      const roleEl = document.getElementById('review-role');
+      const card = document.querySelector('.testimonial-container .bg-gradient-to-b');
+
+      if (card) {
+        card.style.transition = 'opacity 0.25s ease-out, transform 0.25s ease-out';
+        card.style.opacity = '0.3';
+        card.style.transform = dir > 0 ? 'translateX(-15px) rotate(-2deg)' : 'translateX(15px) rotate(-1deg)';
+
+        setTimeout(() => {
+          if (textEl) textEl.innerText = reviews[currentReviewIndex].text;
+          if (nameEl) nameEl.innerText = reviews[currentReviewIndex].name;
+          if (roleEl) roleEl.innerText = reviews[currentReviewIndex].role;
+          card.style.opacity = '1';
+          card.style.transform = 'translateX(0) rotate(-1.5deg)';
+        }, 250);
+      }
+    }
+
+    document.getElementById('review-prev')?.addEventListener('click', () => changeReview(-1));
+    document.getElementById('review-next')?.addEventListener('click', () => changeReview(1));
+  </script>
+</BaseLayout>

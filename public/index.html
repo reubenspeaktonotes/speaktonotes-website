@@ -1,11 +1,838 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=/preview" />
-  <title>SpeaktoNotes — AI Voice to Text</title>
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeaktoNotes - AI-Enhanced Note Taking</title>
+    <meta name="description" content="AI-enhanced notes in seconds.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+
+    <style>
+      :root {
+          --bg-page: #000000;
+          --text-primary: #ffffff;
+          --text-secondary: #a1a1aa;
+          --tesla-btn-radius: 4px;
+      }
+      body {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          background-color: var(--bg-page);
+          color: var(--text-primary);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+          width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+          background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+          background: #333;
+          border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+          background: #BEF264;
+      }
+
+      /* Animations */
+      .fade-enter {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade-enter-active {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      .delay-100 { transition-delay: 100ms; }
+      .delay-200 { transition-delay: 200ms; }
+      .delay-300 { transition-delay: 300ms; }
+
+      /* SPA Transitions */
+      #page-home, #page-about {
+          transition: opacity 0.5s ease, filter 0.5s ease;
+      }
+      .page-hidden {
+          display: none;
+      }
+      .page-visible {
+          opacity: 1;
+          position: relative;
+          z-index: 1;
+      }
+
+      /* Buttons */
+      .btn-primary {
+          background-color: #ffffff;
+          color: #171a20;
+          border-radius: var(--tesla-btn-radius);
+          transition: background-color 0.3s ease;
+      }
+      .btn-primary:hover {
+          background-color: #e5e7eb;
+      }
+      .btn-secondary {
+          background-color: rgba(23, 26, 32, 0.6);
+          backdrop-filter: blur(8px);
+          color: #ffffff;
+          border-radius: var(--tesla-btn-radius);
+          transition: background-color 0.3s ease;
+      }
+      .btn-secondary:hover {
+          background-color: rgba(23, 26, 32, 0.8);
+      }
+      .btn-outline {
+          border: 3px solid #fff;
+          color: #fff;
+          background: transparent;
+          border-radius: var(--tesla-btn-radius);
+      }
+      .btn-outline:hover {
+          background: #fff;
+          color: #000;
+      }
+
+      /* Custom UI Elements */
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+    </style>
 </head>
-<body>
-  <p>Redirecting to <a href="/preview">SpeaktoNotes</a>...</p>
-</body>
-</html>
+
+<body class="overflow-x-hidden selection:bg-[#BEF264] selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+      <div class="max-w-[1600px] mx-auto px-6 h-14 md:h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" onclick="navigateTo('home', event)" class="flex items-center gap-2 z-50 group text-[#BEF264]">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" class="group-hover:text-zinc-300 transition-colors w-[12px] h-[24px]" stroke-width="2" data-icon-replaced="true" style="width: 12px; height: 24px; color: rgb(190, 242, 100)">
+            <rect x="4" y="12" width="4" height="24" rx="1" class=""></rect>
+            <rect x="10" y="8" width="4" height="32" rx="1" class=""></rect>
+            <rect x="16" y="12" width="4" height="24" rx="1" class=""></rect>
+          </svg>
+          <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+        </a>
+
+        <!-- Center Links (Desktop) -->
+        <div class="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          <a href="/download" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">Download</a>
+          <a href="#faq" onclick="navigateTo('home', event, 'faq')" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">FAQ</a>
+          <a href="/about" onclick="navigateTo('about', event)" class="text-sm font-medium text-white/90 hover:text-white transition-colors tracking-wide">About</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMenu()" class="lg:hidden text-white bg-white/10 px-3 py-1.5 rounded-[4px] text-sm font-medium backdrop-blur-md">
+          Menu
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-zinc-900/95 backdrop-blur-xl translate-x-full transition-transform duration-500 flex flex-col pt-24 px-8">
+      <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white p-2">
+        <iconify-icon icon="solar:close-circle-linear" width="32"></iconify-icon>
+      </button>
+      <div class="flex flex-col gap-6">
+        <a href="/download" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">Download</a>
+        <a href="#faq" onclick="navigateTo('home', event, 'faq'); toggleMenu();" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">FAQ</a>
+        <a href="/about" onclick="navigateTo('about', event); toggleMenu();" class="text-xl font-medium text-white border-b border-zinc-800 pb-4">About</a>
+      </div>
+    </div>
+
+    <!-- ===================== HOME PAGE ===================== -->
+    <div id="page-home" class="page-visible">
+
+      <!-- HERO SECTION -->
+      <section class="relative h-screen min-h-[600px] w-full flex flex-col items-center justify-between pb-24 pt-32 overflow-hidden">
+        <div class="absolute inset-0 z-0 transition-all duration-1000">
+           <img src="https://res.cloudinary.com/dc5wwwjsj/image/upload/w_2560,dpr_auto,q_auto:best,f_auto/v1772574696/speaktonotes1png_pcqpz3.png" class="w-full h-full object-cover opacity-60" alt="Dark abstract background">
+           <div class="bg-gradient-to-t from-black via-transparent to-black/40 absolute top-0 right-0 bottom-0 left-0"></div>
+        </div>
+
+        <div class="relative z-10 text-center flex flex-col items-center max-w-4xl px-6 fade-enter transition-all duration-1000 opacity-0 translate-y-10">
+          <h1 class="text-5xl md:text-7xl font-medium tracking-tight text-white mb-4">
+            SpeaktoNotes
+          </h1>
+          <p class="text-lg md:text-xl text-white/90 font-light tracking-wide max-w-xl">
+            AI-enhanced notes in seconds. <br class="hidden md:block"> Capture thoughts at the speed of speech.
+          </p>
+        </div>
+
+        <div class="relative z-10 w-full max-w-sm md:max-w-2xl px-6 flex flex-col md:flex-row gap-4 fade-enter delay-200 transition-all duration-1000">
+          <a href="/download" class="btn-primary text-sm font-medium tracking-wide w-full pt-2.5 pb-2.5 text-center block">
+            Download App
+          </a>
+          <a href="#features" class="btn-secondary w-full py-2.5 text-sm font-medium tracking-wide text-center block">
+            Learn More
+          </a>
+        </div>
+      </section>
+
+      <!-- SPECS / NUMBERS SECTION -->
+      <section id="specs" class="bg-black py-20 md:py-32 border-t border-zinc-900">
+        <div class="max-w-[1400px] mx-auto px-6 transition-all duration-1000">
+           <div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 text-center md:text-left">
+              <div class="flex flex-col items-center md:items-start space-y-2">
+                <div class="text-3xl md:text-4xl font-medium text-white tracking-tighter">
+                  <iconify-icon icon="solar:microphone-3-linear" class="md:hidden mb-2" width="32"></iconify-icon>
+                  0.1s
+                </div>
+                <p class="text-xs md:text-sm text-zinc-400 font-medium uppercase tracking-widest">Latency</p>
+                <p class="text-sm text-zinc-500 font-light hidden md:block">Instant voice capture</p>
+              </div>
+              <div class="flex flex-col items-center md:items-start space-y-2">
+                 <div class="text-3xl md:text-4xl font-medium text-white tracking-tighter">99.9%</div>
+                 <p class="text-xs md:text-sm text-zinc-400 font-medium uppercase tracking-widest">Accuracy</p>
+                 <p class="text-sm text-zinc-500 font-light hidden md:block">AI Enhanced</p>
+              </div>
+              <div class="flex flex-col items-center md:items-start space-y-2">
+                 <div class="text-3xl md:text-4xl font-medium text-white tracking-tighter">10GB</div>
+                 <p class="text-xs md:text-sm text-zinc-400 font-medium uppercase tracking-widest">Cloud Storage</p>
+                 <p class="text-sm text-zinc-500 font-light hidden md:block">Encrypted &amp; Secure</p>
+              </div>
+              <div class="flex flex-col items-center md:items-start space-y-2">
+                 <div class="text-3xl md:text-4xl font-medium text-white tracking-tighter">
+                    <iconify-icon icon="solar:global-linear" class="inline align-middle mb-1"></iconify-icon>
+                 </div>
+                 <p class="text-xs md:text-sm text-zinc-400 font-medium uppercase tracking-widest">Multi-Platform</p>
+                 <p class="hidden md:block text-sm font-light text-zinc-500">iOS, Android, Mac, Windows</p>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      <!-- FEATURES SHOWCASE (Split Screen Desktop) -->
+      <section id="features" class="bg-zinc-900">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-px transition-all duration-1000 opacity-0 translate-y-10">
+            <!-- Feature 1: Left -->
+            <div class="relative w-full h-[80vh] lg:h-screen bg-black overflow-hidden group">
+              <img src="https://res.cloudinary.com/dc5wwwjsj/image/upload/w_2560,dpr_auto,q_auto:best,f_auto/v1772574699/speaktonotes4_q41qm5.png" class="w-full h-full object-cover opacity-60 transition-transform duration-[2s] group-hover:scale-105" alt="Desktop Interface">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+
+              <div class="absolute bottom-16 left-0 right-0 px-8 md:px-12 flex flex-col justify-end h-full pb-16">
+                <div class="max-w-lg">
+                  <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-3 block">Desktop</span>
+                  <h2 class="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-white">Desktop Features</h2>
+                  <p class="text-sm text-zinc-300 font-light leading-relaxed mb-8">
+                    Turn your voice into perfectly written notes, emails, and lists right from your phone. Just talk, and AI does the rest.
+                  </p>
+                  <div class="flex gap-3">
+                    <a href="/features" class="border border-white hover:bg-white hover:text-black text-white px-8 py-2 rounded-[4px] text-sm font-medium transition-colors">
+                      Learn More
+                    </a>
+                    <a href="/download" class="bg-white text-black hover:bg-zinc-200 px-8 py-2 rounded-[4px] text-sm font-medium transition-colors">
+                      Download App
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 2: Right -->
+            <div class="relative w-full h-[80vh] lg:h-screen bg-black overflow-hidden group">
+              <img src="https://res.cloudinary.com/dc5wwwjsj/image/upload/w_2560,dpr_auto,q_auto:best,f_auto/v1772574699/speaktonotes3_fe4sgc.png" class="w-full h-full object-cover opacity-60 transition-transform duration-[2s] group-hover:scale-105" alt="Mobile Interface">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+
+              <div class="absolute bottom-16 left-0 right-0 px-8 md:px-12 flex flex-col justify-end h-full pb-16">
+                 <div class="max-w-lg">
+                  <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-3 block">Mobile</span>
+                  <h2 class="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-white">Mobile Features</h2>
+                  <p class="text-sm text-zinc-300 font-light leading-relaxed mb-8">
+                    Turn your voice into perfectly written notes, emails, and lists right from your phone. Just talk, and AI does the rest.
+                  </p>
+                  <div class="flex gap-3">
+                    <a href="/mobile-features" class="border border-white hover:bg-white hover:text-black text-white px-8 py-2 rounded-[4px] text-sm font-medium transition-colors">
+                      Learn More
+                    </a>
+                    <a href="/download" class="bg-white text-black hover:bg-zinc-200 px-8 py-2 rounded-[4px] text-sm font-medium transition-colors">
+                      Download App
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </section>
+
+      <!-- INTELLIGENT GRID -->
+      <section class="bg-[#000000] py-24 px-6 border-t border-zinc-900">
+        <div class="max-w-[1200px] mx-auto text-center mb-16 transition-all duration-1000 opacity-0 translate-y-10">
+          <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4 text-white">Efficiency at the Core</h2>
+          <p class="text-zinc-400 font-light text-sm md:text-base max-w-2xl mx-auto">
+            SpeaktoNotes is built to capture and organise information as effectively as possible.
+          </p>
+        </div>
+
+        <div class="max-w-[1000px] mx-auto grid grid-cols-2 md:grid-cols-3 gap-px bg-zinc-800 border border-zinc-800 transition-all duration-1000 opacity-0 translate-y-10">
+           <div class="bg-black p-8 md:p-12 flex flex-col items-center justify-center hover:bg-zinc-900 transition-colors group">
+              <iconify-icon icon="solar:letter-linear" class="text-zinc-500 group-hover:text-[#BEF264] transition-colors mb-4" width="32"></iconify-icon>
+              <h3 class="text-white text-sm font-medium">Emails</h3>
+           </div>
+           <div class="bg-black p-8 md:p-12 flex flex-col items-center justify-center hover:bg-zinc-900 transition-colors group">
+              <iconify-icon icon="solar:users-group-rounded-linear" class="text-zinc-500 group-hover:text-[#BEF264] transition-colors mb-4" width="32"></iconify-icon>
+              <h3 class="text-white text-sm font-medium">Meeting Notes</h3>
+           </div>
+           <div class="bg-black p-8 md:p-12 flex flex-col items-center justify-center hover:bg-zinc-900 transition-colors group">
+              <iconify-icon icon="solar:buildings-2-linear" class="text-zinc-500 group-hover:text-[#BEF264] transition-colors mb-4" width="32"></iconify-icon>
+              <h3 class="text-white text-sm font-medium">Property Notes</h3>
+           </div>
+           <div class="bg-black p-8 md:p-12 flex flex-col items-center justify-center hover:bg-zinc-900 transition-colors group">
+              <iconify-icon icon="solar:bill-list-linear" class="text-zinc-500 group-hover:text-[#BEF264] transition-colors mb-4" width="32"></iconify-icon>
+              <h3 class="text-white text-sm font-medium">Job Quotes</h3>
+           </div>
+           <div class="bg-black p-8 md:p-12 flex flex-col items-center justify-center hover:bg-zinc-900 transition-colors group">
+              <iconify-icon icon="solar:graph-up-linear" class="text-zinc-500 group-hover:text-[#BEF264] transition-colors mb-4" width="32"></iconify-icon>
+              <h3 class="text-white text-sm font-medium">Pipeline</h3>
+           </div>
+           <div class="bg-black p-8 md:p-12 flex flex-col items-center justify-center hover:bg-zinc-900 transition-colors group">
+              <iconify-icon icon="solar:lightbulb-linear" class="text-zinc-500 group-hover:text-[#BEF264] transition-colors mb-4" width="32"></iconify-icon>
+              <h3 class="text-white text-sm font-medium">Ideas</h3>
+           </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS -->
+      <section id="reviews" class="bg-zinc-900 py-24 px-6 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto transition-all duration-1000 opacity-0 translate-y-10">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <h2 class="text-3xl font-medium tracking-tight text-white mb-2">Owners Experiences</h2>
+              <p class="text-zinc-400 font-light text-sm">See what professionals are saying.</p>
+            </div>
+            <div class="flex gap-2">
+              <button id="prev-review" class="w-10 h-10 border border-zinc-700 rounded-[4px] flex items-center justify-center text-white hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+              </button>
+              <button id="next-review" class="w-10 h-10 border border-zinc-700 rounded-[4px] flex items-center justify-center text-white hover:bg-zinc-800 transition-colors">
+                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slider Container -->
+          <div class="relative w-full">
+            <div id="reviews-track" class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-8">
+              <!-- Card 1 -->
+              <div class="min-w-[300px] md:min-w-[400px] snap-start bg-black border border-zinc-800 p-8 rounded-[4px] flex flex-col justify-between h-[300px]">
+                 <div>
+                    <div class="flex text-[#BEF264] mb-6">
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                    </div>
+                    <p class="text-zinc-300 font-light text-lg leading-relaxed">
+                       "Working with SpeaktoNotes was a game‑changer. It translates my spoken thoughts into polished meeting notes perfectly."
+                    </p>
+                 </div>
+                 <div>
+                    <p class="text-white font-medium text-sm">Jordan Avery</p>
+                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-widest">Product Manager</p>
+                 </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="min-w-[300px] md:min-w-[400px] snap-start bg-black border border-zinc-800 p-8 rounded-[4px] flex flex-col justify-between h-[300px]">
+                 <div>
+                    <div class="flex text-[#BEF264] mb-6">
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                    </div>
+                    <p class="text-zinc-300 font-light text-lg leading-relaxed">
+                       "The enterprise security and absolute privacy won us over. Being able to record sensitive client meetings without worry is invaluable."
+                    </p>
+                 </div>
+                 <div>
+                    <p class="text-white font-medium text-sm">Sarah Chen</p>
+                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-widest">Legal Partner</p>
+                 </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="min-w-[300px] md:min-w-[400px] snap-start bg-black border border-zinc-800 p-8 rounded-[4px] flex flex-col justify-between h-[300px]">
+                 <div>
+                    <div class="flex text-[#BEF264] mb-6">
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                    </div>
+                    <p class="text-zinc-300 font-light text-lg leading-relaxed">
+                       "I use it on my commute every day. It structures my chaotic voice memos into actionable task lists by the time I reach the office."
+                    </p>
+                 </div>
+                 <div>
+                    <p class="text-white font-medium text-sm">Marcus Thorne</p>
+                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-widest">Startup Founder</p>
+                 </div>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="min-w-[300px] md:min-w-[400px] snap-start bg-black border border-zinc-800 p-8 rounded-[4px] flex flex-col justify-between h-[300px]">
+                 <div>
+                    <div class="flex text-[#BEF264] mb-6">
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                    </div>
+                    <p class="text-zinc-300 font-light text-lg leading-relaxed">
+                       "As a real estate agent, I record property notes on site and they come back perfectly formatted. It saves me hours every week."
+                    </p>
+                 </div>
+                 <div>
+                    <p class="text-white font-medium text-sm">Emily Hartfield</p>
+                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-widest">Real Estate Agent</p>
+                 </div>
+              </div>
+
+              <!-- Card 5 -->
+              <div class="min-w-[300px] md:min-w-[400px] snap-start bg-black border border-zinc-800 p-8 rounded-[4px] flex flex-col justify-between h-[300px]">
+                 <div>
+                    <div class="flex text-[#BEF264] mb-6">
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                       <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                    </div>
+                    <p class="text-zinc-300 font-light text-lg leading-relaxed">
+                       "The Workflows feature is brilliant. I set up a custom template for client briefs and now every recording comes back ready to send."
+                    </p>
+                 </div>
+                 <div>
+                    <p class="text-white font-medium text-sm">Daniel Reeves</p>
+                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-widest">Consultant</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section id="faq" class="bg-black py-24 px-6 border-t border-zinc-900">
+        <div class="max-w-[800px] mx-auto transition-all duration-1000 opacity-0 translate-y-10">
+          <h2 class="text-3xl font-medium tracking-tight text-white mb-12 text-center">Questions</h2>
+
+          <div class="space-y-4">
+             <details class="group border-b border-zinc-800 pb-4">
+                <summary class="flex justify-between items-center cursor-pointer py-4 text-lg font-normal text-white hover:text-zinc-300 transition-colors">
+                   What is SpeaktoNotes and how does it work?
+                   <span class="transform group-open:rotate-45 transition-transform duration-300 text-[#BEF264]/50 group-hover:text-[#BEF264]">
+                      <iconify-icon icon="solar:add-linear" width="24"></iconify-icon>
+                   </span>
+                </summary>
+                <div class="text-zinc-400 font-light leading-relaxed mt-2 text-sm md:text-base">
+                   SpeaktoNotes is an AI-powered voice-to-text app available on iOS, Android, Mac, and Windows. Just speak, and it transcribes your words using the latest AI transcription technology (10–25x faster than standard), then AI enhances the text into polished emails, notes, lists, messages, social posts, or meeting notes using smart templates called "Workflows." Pro users can also create their own custom Workflows from templates. Your account syncs across all devices.
+                </div>
+             </details>
+
+             <details class="group border-b border-zinc-800 pb-4">
+                <summary class="flex justify-between items-center cursor-pointer py-4 text-lg font-normal text-white hover:text-zinc-300 transition-colors">
+                   What features are included?
+                   <span class="transform group-open:rotate-45 transition-transform duration-300 text-[#BEF264]/50 group-hover:text-[#BEF264]">
+                      <iconify-icon icon="solar:add-linear" width="24"></iconify-icon>
+                   </span>
+                </summary>
+                <div class="text-zinc-400 font-light leading-relaxed mt-2 text-sm md:text-base">
+                   All plans include 6 AI Workflows (Email, Text, List, Note, Social, Meeting), AI-generated titles, action item extraction from meetings, folder organization, full-text search, and one-tap copy to clipboard. Pro users can create custom Workflows from templates. The iOS version also includes a system-wide keyboard extension for dictating into any app.
+                </div>
+             </details>
+
+             <details class="group border-b border-zinc-800 pb-4">
+                <summary class="flex justify-between items-center cursor-pointer py-4 text-lg font-normal text-white hover:text-zinc-300 transition-colors">
+                   How much does SpeaktoNotes cost?
+                   <span class="transform group-open:rotate-45 transition-transform duration-300 text-[#BEF264]/50 group-hover:text-[#BEF264]">
+                      <iconify-icon icon="solar:add-linear" width="24"></iconify-icon>
+                   </span>
+                </summary>
+                <div class="text-zinc-400 font-light leading-relaxed mt-2 text-sm md:text-base">
+                   Monthly: $14.99 NZD/mo (250 min, 5 GB). Annual: $11.99 NZD/mo - save 20% (250 min, 5 GB). Pro: $24.99 NZD/mo (1,000 min, 10 GB, priority support). All plans include AI enhancement and all 6 Workflows. Cancel anytime, no hidden fees. Minutes reset each billing period.
+                </div>
+             </details>
+
+             <details class="group border-b border-zinc-800 pb-4">
+                <summary class="flex justify-between items-center cursor-pointer py-4 text-lg font-normal text-white hover:text-zinc-300 transition-colors">
+                   What platforms does SpeaktoNotes support?
+                   <span class="transform group-open:rotate-45 transition-transform duration-300 text-[#BEF264]/50 group-hover:text-[#BEF264]">
+                      <iconify-icon icon="solar:add-linear" width="24"></iconify-icon>
+                   </span>
+                </summary>
+                <div class="text-zinc-400 font-light leading-relaxed mt-2 text-sm md:text-base">
+                   iPhone &amp; iPad (iOS 15+), Android, Mac (native app), and Windows. All platforms are fully featured with the same AI transcription, Workflows, folder organization, and account sync. The iOS keyboard extension lets you dictate directly into any app system-wide.
+                </div>
+             </details>
+
+             <details class="group border-b border-zinc-800 pb-4">
+                <summary class="flex justify-between items-center cursor-pointer py-4 text-lg font-normal text-white hover:text-zinc-300 transition-colors">
+                   Is my data secure?
+                   <span class="transform group-open:rotate-45 transition-transform duration-300 text-[#BEF264]/50 group-hover:text-[#BEF264]">
+                      <iconify-icon icon="solar:add-linear" width="24"></iconify-icon>
+                   </span>
+                </summary>
+                <div class="text-zinc-400 font-light leading-relaxed mt-2 text-sm md:text-base">
+                   Yes. Audio and text are encrypted in transit and at rest. Notes are private and only accessible through your authenticated account. Payments are handled securely via Stripe. Storage is included in your plan (5 GB standard, 10 GB Pro).
+                </div>
+             </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRE-FOOTER CTA -->
+      <section class="bg-black py-32 px-6 text-center border-t border-zinc-900">
+         <h2 class="text-3xl md:text-4xl font-medium text-white mb-8 tracking-tight">Experience SpeaktoNotes</h2>
+         <div class="flex justify-center items-center transition-all duration-1000 opacity-0 translate-y-10">
+            <a href="/download" class="bg-white text-black px-12 py-3 rounded-[4px] text-sm font-medium hover:bg-zinc-200 transition-colors w-full md:w-auto min-w-[200px] text-center">
+               Get Started
+            </a>
+         </div>
+         <p class="text-xs text-zinc-500 mt-8">No lock-in contracts. Cancel anytime.</p>
+      </section>
+
+    </div>
+
+    <!-- ===================== ABOUT PAGE ===================== -->
+    <div id="page-about" class="page-hidden">
+      <!-- About Content -->
+      <section class="bg-black pt-32 pb-16 md:pt-40 md:pb-20 px-6">
+         <div class="max-w-[1000px] mx-auto">
+            <div class="text-center mb-12">
+               <span class="text-xs font-semibold tracking-widest uppercase text-[#BEF264]/70 mb-4 block">About</span>
+               <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-white">The Story</h1>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+               <!-- Photo -->
+               <div>
+                  <div class="w-full aspect-[4/5] bg-zinc-900 rounded-[4px] flex items-center justify-center border border-zinc-800">
+                     <div class="text-center px-6">
+                        <iconify-icon icon="solar:user-circle-linear" class="text-zinc-700" width="64"></iconify-icon>
+                        <p class="text-zinc-600 text-xs mt-3 uppercase tracking-widest">Photo placeholder</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Text + Socials -->
+               <div>
+                  <div class="space-y-6 text-zinc-400 font-light leading-relaxed text-base md:text-lg">
+                     <p>Six months ago, I discovered voice typing and I was hooked from the first word. The more I learned, tested, and wove it into my own life, the more I knew the world needed this too. That's how SpeaktoNotes was born.</p>
+                     <p>What started as a single idea is now something real, something you can experience for yourself. Voice typing isn't just a new feature. It's the next evolution in how humans interact with computers.</p>
+                     <p class="text-white font-medium">The future is ready. And so are you. Try it today.</p>
+                  </div>
+
+                  <!-- Social Links -->
+                  <div class="mt-10 pt-8 border-t border-zinc-800">
+                     <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-5">Follow the journey</p>
+                     <div class="flex gap-5">
+                        <a href="#" class="text-zinc-400 hover:text-[#BEF264] transition-colors"><iconify-icon icon="mdi:youtube" width="26"></iconify-icon></a>
+                        <a href="#" class="text-zinc-400 hover:text-[#BEF264] transition-colors"><iconify-icon icon="ic:baseline-tiktok" width="26"></iconify-icon></a>
+                        <a href="#" class="text-zinc-400 hover:text-[#BEF264] transition-colors"><iconify-icon icon="mdi:instagram" width="26"></iconify-icon></a>
+                        <a href="#" class="text-zinc-400 hover:text-[#BEF264] transition-colors"><iconify-icon icon="mdi:linkedin" width="26"></iconify-icon></a>
+                        <a href="#" class="text-zinc-400 hover:text-[#BEF264] transition-colors"><iconify-icon icon="mdi:twitter" width="26"></iconify-icon></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- About Footer -->
+      <footer class="bg-black py-16 px-6 border-t border-zinc-900">
+        <div class="max-w-[1200px] mx-auto">
+           <div class="flex flex-col md:flex-row justify-between gap-12 mb-12">
+              <div>
+                 <a href="/" class="flex items-center gap-2 group text-[#BEF264] mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" style="width: 12px; height: 24px; color: rgb(190, 242, 100)">
+                       <rect x="4" y="12" width="4" height="24" rx="1"></rect>
+                       <rect x="10" y="8" width="4" height="32" rx="1"></rect>
+                       <rect x="16" y="12" width="4" height="24" rx="1"></rect>
+                    </svg>
+                    <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+                 </a>
+                 <p class="text-zinc-500 text-xs font-light max-w-[250px]">AI-enhanced notes in seconds. Capture thoughts at the speed of speech.</p>
+              </div>
+              <div class="flex flex-wrap gap-16">
+                 <div>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Pages</p>
+                    <div class="flex flex-col gap-3">
+                       <a href="/" class="text-xs text-zinc-500 hover:text-white transition-colors">Home</a>
+                       <a href="/features" class="text-xs text-zinc-500 hover:text-white transition-colors">Desktop Features</a>
+                       <a href="/mobile-features" class="text-xs text-zinc-500 hover:text-white transition-colors">Mobile Features</a>
+                       <a href="/pricing" class="text-xs text-zinc-500 hover:text-white transition-colors">Pricing</a>
+                       <a href="/download" class="text-xs text-zinc-500 hover:text-white transition-colors">Download</a>
+                    </div>
+                 </div>
+                 <div>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Legal</p>
+                    <div class="flex flex-col gap-3">
+                       <a href="/terms" class="text-xs text-zinc-500 hover:text-white transition-colors">Terms of Service</a>
+                       <a href="/privacy" class="text-xs text-zinc-500 hover:text-white transition-colors">Privacy Policy</a>
+                       <a href="mailto:contact@speaktonotes.com" class="text-xs text-zinc-500 hover:text-white transition-colors">Contact</a>
+                    </div>
+                 </div>
+                 <div>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Compare</p>
+                    <div class="flex flex-col gap-3">
+                       <a href="/compare/speaktonotes-vs-letterly" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Letterly</a>
+                       <a href="/compare/speaktonotes-vs-chatgpt" class="text-xs text-zinc-500 hover:text-white transition-colors">vs ChatGPT</a>
+                       <a href="/compare/speaktonotes-vs-claude" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Claude</a>
+                       <a href="/compare/speaktonotes-vs-fireflies" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Fireflies</a>
+                       <a href="/compare/speaktonotes-vs-granola" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Granola</a>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <div class="border-t border-zinc-900 pt-8 pb-8">
+              <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                 <div>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-2">Stay in the loop</p>
+                    <p class="text-zinc-500 text-xs font-light">Get weekly updates, tips, and news straight to your inbox.</p>
+                 </div>
+                 <form class="newsletter-form flex gap-2 w-full md:w-auto">
+                    <input type="email" name="email" required placeholder="you@email.com" class="bg-zinc-900 border border-zinc-800 rounded-[4px] px-4 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#BEF264]/50 w-full md:w-[240px]">
+                    <button type="submit" class="bg-[#BEF264] text-black px-5 py-2 rounded-[4px] text-sm font-medium hover:bg-[#d9f99d] transition-colors whitespace-nowrap">Subscribe</button>
+                 </form>
+              </div>
+              <p class="newsletter-message text-xs mt-3 hidden"></p>
+           </div>
+           <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+              <span class="text-zinc-500 text-xs">SpeaktoNotes &copy; 2026</span>
+              <div class="flex gap-4">
+                 <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:linkedin" width="20"></iconify-icon></a>
+                 <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:twitter" width="20"></iconify-icon></a>
+                 <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:instagram" width="20"></iconify-icon></a>
+                 <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="ic:baseline-tiktok" width="20"></iconify-icon></a>
+                 <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:youtube" width="20"></iconify-icon></a>
+              </div>
+           </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer-home" class="bg-black py-16 px-6 border-t border-zinc-900">
+      <div class="max-w-[1200px] mx-auto">
+         <div class="flex flex-col md:flex-row justify-between gap-12 mb-12">
+            <div>
+               <a href="/" class="flex items-center gap-2 group text-[#BEF264] mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" style="width: 12px; height: 24px; color: rgb(190, 242, 100)">
+                     <rect x="4" y="12" width="4" height="24" rx="1"></rect>
+                     <rect x="10" y="8" width="4" height="32" rx="1"></rect>
+                     <rect x="16" y="12" width="4" height="24" rx="1"></rect>
+                  </svg>
+                  <span class="text-lg text-[#BEF264] tracking-[0.1em]" style="font-family: 'Sora', sans-serif; font-weight: 400">SpeaktoNotes</span>
+               </a>
+               <p class="text-zinc-500 text-xs font-light max-w-[250px]">AI-enhanced notes in seconds. Capture thoughts at the speed of speech.</p>
+            </div>
+            <div class="flex flex-wrap gap-16">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Pages</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/" class="text-xs text-zinc-500 hover:text-white transition-colors">Home</a>
+                     <a href="/features" class="text-xs text-zinc-500 hover:text-white transition-colors">Desktop Features</a>
+                     <a href="/mobile-features" class="text-xs text-zinc-500 hover:text-white transition-colors">Mobile Features</a>
+                     <a href="/pricing" class="text-xs text-zinc-500 hover:text-white transition-colors">Pricing</a>
+                     <a href="/download" class="text-xs text-zinc-500 hover:text-white transition-colors">Download</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Legal</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/terms" class="text-xs text-zinc-500 hover:text-white transition-colors">Terms of Service</a>
+                     <a href="/privacy" class="text-xs text-zinc-500 hover:text-white transition-colors">Privacy Policy</a>
+                     <a href="mailto:contact@speaktonotes.com" class="text-xs text-zinc-500 hover:text-white transition-colors">Contact</a>
+                  </div>
+               </div>
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">Compare</p>
+                  <div class="flex flex-col gap-3">
+                     <a href="/compare/speaktonotes-vs-letterly" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Letterly</a>
+                     <a href="/compare/speaktonotes-vs-chatgpt" class="text-xs text-zinc-500 hover:text-white transition-colors">vs ChatGPT</a>
+                     <a href="/compare/speaktonotes-vs-claude" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Claude</a>
+                     <a href="/compare/speaktonotes-vs-fireflies" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Fireflies</a>
+                     <a href="/compare/speaktonotes-vs-granola" class="text-xs text-zinc-500 hover:text-white transition-colors">vs Granola</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 pb-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+               <div>
+                  <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-2">Stay in the loop</p>
+                  <p class="text-zinc-500 text-xs font-light">Get weekly updates, tips, and news straight to your inbox.</p>
+               </div>
+               <form class="newsletter-form flex gap-2 w-full md:w-auto">
+                  <input type="email" name="email" required placeholder="you@email.com" class="bg-zinc-900 border border-zinc-800 rounded-[4px] px-4 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#BEF264]/50 w-full md:w-[240px]">
+                  <button type="submit" class="bg-[#BEF264] text-black px-5 py-2 rounded-[4px] text-sm font-medium hover:bg-[#d9f99d] transition-colors whitespace-nowrap">Subscribe</button>
+               </form>
+            </div>
+            <p class="newsletter-message text-xs mt-3 hidden"></p>
+         </div>
+         <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-zinc-500 text-xs">SpeaktoNotes &copy; 2026</span>
+            <div class="flex gap-4">
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:linkedin" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:twitter" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:instagram" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="ic:baseline-tiktok" width="20"></iconify-icon></a>
+               <a href="#" class="text-zinc-500 hover:text-white transition-colors"><iconify-icon icon="mdi:youtube" width="20"></iconify-icon></a>
+            </div>
+         </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navigation Logic
+      const routes = {
+        home:  { path: '/', title: 'SpeaktoNotes - AI-Enhanced Note Taking' },
+        about: { path: '/about', title: 'About - SpeaktoNotes' }
+      };
+
+      function navigateTo(page, event, anchor) {
+        if (event) event.preventDefault();
+
+        const homeEl = document.getElementById('page-home');
+        const aboutEl = document.getElementById('page-about');
+        const footerHome = document.getElementById('footer-home');
+        const route = routes[page] || routes.home;
+
+        // Visual Page Swap
+        if (page === 'about') {
+           homeEl.classList.remove('page-visible');
+           homeEl.classList.add('page-hidden');
+           footerHome.style.display = 'none';
+           aboutEl.classList.remove('page-hidden');
+           aboutEl.classList.add('page-visible');
+           document.getElementById('navbar').classList.add('bg-black');
+        } else {
+           aboutEl.classList.remove('page-visible');
+           aboutEl.classList.add('page-hidden');
+           homeEl.classList.remove('page-hidden');
+           homeEl.classList.add('page-visible');
+           footerHome.style.display = '';
+           document.getElementById('navbar').classList.remove('bg-black');
+        }
+
+        // History
+        window.history.pushState({ page, anchor }, route.title, route.path);
+        document.title = route.title;
+
+        // Scroll
+        if (anchor) {
+           setTimeout(() => {
+              const el = document.getElementById(anchor);
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+           }, 100);
+        } else {
+           window.scrollTo(0,0);
+        }
+      }
+
+      function toggleMenu() {
+         const menu = document.getElementById('mobile-menu');
+         menu.classList.toggle('translate-x-full');
+         document.body.classList.toggle('overflow-hidden');
+      }
+
+      // Review Slider Logic
+      const track = document.getElementById('reviews-track');
+      document.getElementById('next-review').onclick = () => {
+         track.scrollBy({ left: 320, behavior: 'smooth' });
+      };
+      document.getElementById('prev-review').onclick = () => {
+         track.scrollBy({ left: -320, behavior: 'smooth' });
+      };
+
+      // Header Scroll Effect
+      window.addEventListener('scroll', () => {
+         const nav = document.getElementById('navbar');
+         const homeVisible = document.getElementById('page-home').classList.contains('page-visible');
+
+         if (homeVisible) {
+             if (window.scrollY > 50) {
+                 nav.classList.add('bg-black/80', 'backdrop-blur-md');
+             } else {
+                 nav.classList.remove('bg-black/80', 'backdrop-blur-md');
+             }
+         }
+      });
+
+      // Animation Observer
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('opacity-100', 'translate-y-0');
+                  entry.target.classList.remove('opacity-0', 'translate-y-10');
+              }
+          });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('section > div').forEach(el => {
+          el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+          observer.observe(el);
+      });
+
+      // Init
+      (function init() {
+         if(window.location.pathname === '/about') navigateTo('about');
+         var hash = window.location.hash;
+         if(hash === '#about') navigateTo('about');
+         if(hash === '#faq') {
+            navigateTo('home');
+            setTimeout(function(){ var el = document.getElementById('faq'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 200);
+         }
+      })();
+    </script>
+
+<script>
+document.querySelectorAll('.newsletter-form').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = form.email.value;
+    const msg = form.parentElement.parentElement.querySelector('.newsletter-message');
+    const btn = form.querySelector('button');
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        if (msg) { msg.textContent = 'Thanks for subscribing!'; msg.className = 'newsletter-message text-xs mt-3 text-[#BEF264]'; }
+        form.reset();
+      } else {
+        if (msg) { msg.textContent = data.error || 'Something went wrong.'; msg.className = 'newsletter-message text-xs mt-3 text-red-400'; }
+      }
+    } catch {
+      if (msg) { msg.textContent = 'Something went wrong.'; msg.className = 'newsletter-message text-xs mt-3 text-red-400'; }
+    }
+    btn.disabled = false;
+    btn.textContent = 'Subscribe';
+  });
+});
+</script>
+
+</body></html>

@@ -1,0 +1,75 @@
+---
+const { currentPage = 'home' } = Astro.props;
+---
+
+<nav class="fixed z-50 bg-zinc-950/80 w-full border-zinc-800/50 border-b top-0 backdrop-blur-xl">
+  <div class="flex h-16 max-w-7xl mx-auto px-6 items-center justify-between">
+    <a href="/" class="flex items-center gap-2 z-50 text-lg font-semibold text-[#BEF264] tracking-tighter" style="font-family: 'Sora', sans-serif; font-weight: 700;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48" fill="currentColor" class="w-[14px] h-[28px]" stroke-width="2">
+        <rect x="4" y="12" width="4" height="24" rx="2"></rect>
+        <rect x="10" y="8" width="4" height="32" rx="2"></rect>
+        <rect x="16" y="12" width="4" height="24" rx="2"></rect>
+      </svg>
+      SpeaktoNotes
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="/#features" class="hover:text-white transition-colors">Features</a>
+      <a href="/#testimonials" class="hover:text-white transition-colors">Reviews</a>
+      <a href="/#pricing" class="hover:text-white transition-colors">FAQ's</a>
+      <a href="/about" class:list={["hover:text-white transition-colors", { "text-[#BEF264]": currentPage === "about" }]}>Pricing</a>
+    </div>
+
+    <div class="hidden md:flex items-center gap-4">
+      <a href="/#contact" class="hover:bg-[#d9f58c] transition-colors text-xs font-semibold text-black bg-[#BEF264] rounded-full pt-2.5 pr-5 pb-2.5 pl-5">
+        Download
+      </a>
+    </div>
+
+    <button id="menu-toggle-btn" class="md:hidden text-white focus:outline-none p-2 rounded-lg hover:bg-zinc-800 z-50 transition-colors">
+      <iconify-icon icon="solar:hamburger-menu-linear" width="24" height="24" class="text-white"></iconify-icon>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Overlay Menu -->
+<div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-[#0a0a0a] flex flex-col items-center justify-center space-y-8 backdrop-blur-3xl">
+  <button id="menu-close-btn" class="absolute top-4 right-4 text-zinc-400 hover:text-white p-2">
+    <iconify-icon icon="solar:close-circle-linear" width="32"></iconify-icon>
+  </button>
+  <a href="/#features" class="mobile-menu-link text-2xl font-medium text-white tracking-tight hover:text-[#BEF264] transition-colors">Features</a>
+  <a href="/#testimonials" class="mobile-menu-link text-2xl font-medium text-white tracking-tight hover:text-[#BEF264] transition-colors">Reviews</a>
+  <a href="/#pricing" class="mobile-menu-link text-2xl font-medium text-white tracking-tight hover:text-[#BEF264] transition-colors">Pricing</a>
+  <a href="/about" class="mobile-menu-link text-2xl font-medium text-white tracking-tight hover:text-[#BEF264] transition-colors">About</a>
+  <div class="h-px w-20 bg-zinc-800 my-4"></div>
+  <a href="#signup" class="mobile-menu-link text-lg font-bold text-black bg-[#BEF264] px-8 py-3 rounded-full">Get App</a>
+</div>
+
+<script>
+  function initMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const toggleBtn = document.getElementById('menu-toggle-btn');
+    const closeBtn = document.getElementById('menu-close-btn');
+    const links = document.querySelectorAll('.mobile-menu-link');
+
+    function toggleMenu() {
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        menu.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    toggleBtn?.addEventListener('click', toggleMenu);
+    closeBtn?.addEventListener('click', toggleMenu);
+    links.forEach(link => link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      document.body.style.overflow = '';
+    }));
+  }
+
+  initMobileMenu();
+  document.addEventListener('astro:after-swap', initMobileMenu);
+</script>
